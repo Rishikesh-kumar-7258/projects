@@ -1,4 +1,4 @@
-console.log('This is a project which I am going to complete.')
+// console.log('This is a project which I am going to complete.')
 
 if (!localStorage.getItem("color"))
     localStorage.setItem('color',"black");
@@ -64,29 +64,88 @@ document.getElementsByTagName('input')[0].style.background = localStorage.getIte
 let input = document.getElementById('text');
 let text = document.getElementsByClassName('text')[0].innerText;
 
+let PASSAGE_LENGTH =  text.length;
+let TIME_START , TIME_END ;
+
 let passage_area = document.getElementsByClassName('text')[0];
 passage_area.innerHTML = "";
-for (let i = 0, n = text.length; i < n; i++)
+for (let i = 0; i < PASSAGE_LENGTH; i++)
 {
     passage_area.innerHTML += `<span>${text[i]}</span>`;
 }
 
 let span = document.getElementsByTagName('span');
 let i_span = 0;
-input.addEventListener('input', e => {
+input.addEventListener('input', typed = e => {
+    if (i_span == 0) TIME_START = Date.now();
 
-    if (span[i_span].innerText == e.data) 
+    // console.log(typeof(TIME_START));
+
+    if (span[i_span] == '.')
     {
-        span[i_span].style.color = "#0f0";
-        i_span++;
+        clearInterval(blink_interval);
+        TIME_END = Date.now();
     }
     else
     {
-        span[i_span].style.color = "#f00";
+        if (i_span < PASSAGE_LENGTH)
+        {
+            if (span[i_span].innerText == e.data)
+            {
+                span[i_span].style.color = "#0f0";
+                span[i_span].id = "";
+                i_span++;
+            }
+            else
+            {
+                span[i_span].style.color = "#f00";
+            }
+        
+        }
+
+        if ( i_span < PASSAGE_LENGTH &&  span[i_span].innerText == " ")
+            input.value = "";
+    }
+});
+
+if (i_span >= PASSAGE_LENGTH) input.removeEventListener('click', typed(e));
+
+
+let blink_interval = setInterval(() => {
+
+    if (i_span == PASSAGE_LENGTH) 
+    {
+        clearInterval(blink_interval);
+        // console.log(Number(TIME_END) - Number(TIME_START));
     }
 
-    if (e.data == " ")
+    if (i_span < PASSAGE_LENGTH)
+        span[i_span].id = "";
+
+    setTimeout(() => {
+        if (i_span < PASSAGE_LENGTH)
+            span[i_span].id = "blink";
+    }, 500);
+
+}, 1000);
+
+let COUNT = 0;
+
+let count_interval = setInterval(() => {
+    COUNT += 1;
+    
+    if (i_span == 0) COUNT = 0;
+
+    if (i_span == PASSAGE_LENGTH) 
     {
-        console.log(input.innerText);
+        console.log(COUNT);
+        clearInterval(count_interval);
+        let speed = (PASSAGE_LENGTH / 5 )/ ((COUNT - 1 )/ 60);
+        console.log(speed);
     }
-})
+}, 1000);
+
+function reset()
+{
+    location.reload();
+}

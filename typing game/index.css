@@ -74,10 +74,31 @@ main {
   place-items: center;
 }
 
+main #blink {
+  background-color: lightblue;
+}
+
 main input {
   width: 50%;
   height: 10vh;
   font-size: 1.4rem;
   text-align: center;
+}
+
+main button {
+  width: 20%;
+  color: green;
+  border: 1px solid green;
+  background: #bbb;
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+  position: absolute;
+  bottom: 10%;
+  left: 40%;
+}
+
+main button:hover {
+  background: green;
+  color: #ddd;
 }
 /*# sourceMappingURL=index.css.map */
