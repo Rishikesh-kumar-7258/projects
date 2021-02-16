@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  -ms-grid-rows: auto 1fr;
+      grid-template-rows: auto 1fr;
+  background-color: #bbb;
+}
+
+header {
+  width: 100%;
+  font-weight: 800;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: lightslategrey;
+  position: relative;
+}
+
+header div {
+  width: 30px;
+  background-color: black;
+  position: absolute;
+  right: 10vw;
+  top: 40%;
+  bottom: 40%;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid black;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+header div::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  border-radius: 50%;
+  background: white;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+header #white {
+  background-color: white;
+}
+
+header #white::before {
+  background-color: black;
+  left: calc(100% - 15px);
+}
+
+main {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+main input {
+  width: 50%;
+  height: 10vh;
+  font-size: 1.4rem;
+  text-align: center;
+}
+/*# sourceMappingURL=index.css.map */
