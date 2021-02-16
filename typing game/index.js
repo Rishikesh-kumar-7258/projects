@@ -1,5 +1,6 @@
 // console.log('This is a project which I am going to complete.')
 
+// Making local storage variables
 if (!localStorage.getItem("color"))
     localStorage.setItem('color',"black");
 if (!localStorage.getItem('background'))
@@ -9,10 +10,26 @@ if (!localStorage.getItem('background_input'))
 if (!localStorage.getItem('btn_id'))
     localStorage.setItem('btn_id', '');
 
+// DIFFERENT ELEMENT FROM HTML USED IN THE JAVASCRIPT
 let toggle_btn = document.getElementsByClassName('toggle_back')[0];
+let input = document.getElementById('text');
+let text = document.getElementsByClassName('text')[0].innerText;
+let passage_area = document.getElementsByClassName('text')[0];
+let span = document.getElementsByTagName('span');
 
+// DIFFERENT VARIABLES USED IN THE CODE
+let PASSAGE_LENGTH =  text.length;
+let i_span = 0;
+let COUNT = 0;
+
+// DIFFERENT FUNCTION USED
+function reset()
+{
+    location.reload();
+}
+
+// TO TOGGLE THE THEME OF THE PAGE (FOR TOGGLE BUTTON)
 toggle_btn.addEventListener('click', () => {
-    // console.log('event is fired');
 
     if (toggle_btn.id == "")
     {
@@ -60,31 +77,18 @@ document.getElementsByTagName('body')[0].style.backgroundColor = localStorage.ge
 document.getElementsByTagName('main')[0].style.color = localStorage.getItem('color');
 document.getElementsByTagName('input')[0].style.background = localStorage.getItem('background_input');
 
-
-let input = document.getElementById('text');
-let text = document.getElementsByClassName('text')[0].innerText;
-
-let PASSAGE_LENGTH =  text.length;
-let TIME_START , TIME_END ;
-
-let passage_area = document.getElementsByClassName('text')[0];
+// TO CONVERT ALL THE WRITTEN WORDS INTO SPAN OF SINGLE DIGITS
 passage_area.innerHTML = "";
 for (let i = 0; i < PASSAGE_LENGTH; i++)
 {
     passage_area.innerHTML += `<span>${text[i]}</span>`;
 }
 
-let span = document.getElementsByTagName('span');
-let i_span = 0;
+// TO CATCH WHICH WORD IS TYPED AND COMPARE WITH THE WORD WRITTEN ON THE SCREEN
 input.addEventListener('input', typed = e => {
-    if (i_span == 0) TIME_START = Date.now();
-
-    // console.log(typeof(TIME_START));
-
     if (span[i_span] == '.')
     {
         clearInterval(blink_interval);
-        TIME_END = Date.now();
     }
     else
     {
@@ -110,7 +114,7 @@ input.addEventListener('input', typed = e => {
 
 if (i_span >= PASSAGE_LENGTH) input.removeEventListener('click', typed(e));
 
-
+// MAKING THE BLINK ANIMATIONS FOR THE WORD
 let blink_interval = setInterval(() => {
 
     if (i_span == PASSAGE_LENGTH) 
@@ -129,8 +133,7 @@ let blink_interval = setInterval(() => {
 
 }, 1000);
 
-let COUNT = 0;
-
+// COUNTING THE AMOUNG OF TIME PASSED
 let count_interval = setInterval(() => {
     COUNT += 1;
     
@@ -138,14 +141,12 @@ let count_interval = setInterval(() => {
 
     if (i_span == PASSAGE_LENGTH) 
     {
-        console.log(COUNT);
         clearInterval(count_interval);
         let speed = (PASSAGE_LENGTH / 5 )/ ((COUNT - 1 )/ 60);
-        console.log(speed);
+
+        // SHOWING THE SCORE ON COMPLETION
+        let div = document.getElementsByClassName('text')[0];
+        div.dataset.score = `Speed = ${parseInt(speed)}`;
+        document.styleSheets[0].addRule('body main .text::before', 'display : grid;')
     }
 }, 1000);
-
-function reset()
-{
-    location.reload();
-}

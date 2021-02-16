@@ -75,7 +75,25 @@ main {
 }
 
 main #blink {
-  background-color: lightblue;
+  background-color: orange;
+  color: white;
+}
+
+main .text {
+  position: relative;
+}
+
+main .text::before {
+  content: attr(data-score);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #555;
+  place-items: center;
+  color: #66f;
+  display: none;
 }
 
 main input {
@@ -93,8 +111,10 @@ main button {
   font-size: 1.4rem;
   padding: 0.5rem 0;
   position: absolute;
-  bottom: 10%;
-  left: 40%;
+  top: 15%;
+  left: 3px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 main button:hover {
