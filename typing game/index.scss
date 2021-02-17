@@ -1,9 +1,11 @@
+// CSS RESET
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+// CSS FOR WHOLE BODY
 body{
     display: grid;
     width: 100vw;
@@ -12,6 +14,7 @@ body{
     background-color: #bbb;
 }
 
+//CSS FOR HEADER
 header{
     width: 100%;
     font-weight: 800;
@@ -21,6 +24,7 @@ header{
     background-color: lightslategrey;
     position: relative;
 
+    // CSS FOR THE TOGGLE BUTTON AT THE TOP RIGHT CORNER
     div{
         width: 30px;
         background-color: black;
@@ -35,6 +39,7 @@ header{
         cursor: pointer;
     }
     
+    //MAKING THE LITTLE CIRCLE INSIDE THE TOGGLE BUTTON
     div::before{
         content: "";
         position: absolute;
@@ -45,32 +50,41 @@ header{
         top: 0;
         bottom: 0;
     }
+
+    // EFFECT WHEN THE BUTTON IS TOGGLED TO WHITE
     #white{
         background-color: white;
     }
+
+    // CHANGING THE POSITION OF THE LITTLE CIRCLE INSIDE THE TOGGLE BUTTON
     #white::before{
         background-color: black;
         left: calc(100% - 15px);
     }
 }
 
+// CSS FOR THE MIDDLE PART WHERE THE TEXT AND EVERYTHING ELSE IS
 main{
     width: 60%;
     margin:  0 auto;
-    // border: 1px solid silver;
     text-align: center;
     font-size: 1.5rem;
     padding: 1rem;
     display: grid;
     place-items: center;
 
+    // CSS FOR THE BLINKING PROPERTY 
     #blink{
         background-color: orange;
         color : white;
     }
+
+    // CSS FOR THE DIV WHERE THE TEXT IS WRITTEN
     .text{
         position: relative;
     }
+
+    // CSS FOR THE DIV WHEN THE GAME IS FINISHED
     .text::before{
         content: attr(data-score);
         position: absolute;
@@ -83,12 +97,16 @@ main{
         color: #66f;
         display: none;
     }
+
+    // CSS FOR THE INPUT AREA WHERE THE TYPING IS DONE
     input{
         width: 50%;
         height: 10vh;
         font-size: 1.4rem;
         text-align: center;
     }
+
+    // BUTTON TO RESTART THE GAME
     button{
         width : 20%;
         color: green;
@@ -102,6 +120,8 @@ main{
         border-radius: 5px;
         cursor: pointer;
     }
+
+    // GIVING HOVER EFFECT ON THE GAME
     button:hover{
         background: green;
         color: #ddd;

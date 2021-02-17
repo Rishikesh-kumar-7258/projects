@@ -86,6 +86,7 @@ for (let i = 0; i < PASSAGE_LENGTH; i++)
 
 // TO CATCH WHICH WORD IS TYPED AND COMPARE WITH THE WORD WRITTEN ON THE SCREEN
 input.addEventListener('input', typed = e => {
+
     if (span[i_span] == '.')
     {
         clearInterval(blink_interval);
@@ -131,7 +132,7 @@ let blink_interval = setInterval(() => {
             span[i_span].id = "blink";
     }, 500);
 
-}, 1000);
+}, 400);
 
 // COUNTING THE AMOUNG OF TIME PASSED
 let count_interval = setInterval(() => {
@@ -142,11 +143,11 @@ let count_interval = setInterval(() => {
     if (i_span == PASSAGE_LENGTH) 
     {
         clearInterval(count_interval);
-        let speed = (PASSAGE_LENGTH / 5 )/ ((COUNT - 1 )/ 60);
+        let speed = (PASSAGE_LENGTH / 5 ) / ((COUNT / (60 * 200)));
 
         // SHOWING THE SCORE ON COMPLETION
         let div = document.getElementsByClassName('text')[0];
         div.dataset.score = `Speed = ${parseInt(speed)}`;
         document.styleSheets[0].addRule('body main .text::before', 'display : grid;')
     }
-}, 1000);
+}, 5);

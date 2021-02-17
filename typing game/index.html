@@ -1,29 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!--This is the header file we must include before writting the HTML code.-->
+<html lang="en"> <!-- Initialising the code and saying to the editor that the language is english-->
 
-<head>
-    <meta charset="UTF-8">
+<head> <!--This is the head of the game it is not displayed in the main content-->
+    <meta charset="UTF-8"> <!--Specifies the character encoding for the HTML document-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Typing Master</title>
+    <meta name="dispcription" content="A typing game project for beginners in Web Dev.">
+    <meta name="author" content="Rishikesh Kumar">
+    <link rel="stylesheet" href="index.css"> <!--linking the css here -->
+    <title>Typing Master</title> <!--Title for the game (it is displayed in the space on the top)-->
 </head>
 
 <body>
     <header>
-        Test your typing speed
-        <div class="toggle_back"></div>
+        Test your typing speed <!--The text displayed on the top.-->
+        <div class="toggle_back"></div> <!--Creating a toggle button.-->
     </header>
     <main>
         <div class="text" data-score="Speed = 53">I hope that you find it obvious that the LINEAR-SEARCH procedure
             always returns a correct answer. You might have noticed, however, that
-            this procedure is inefficient.</div>
-        <input type="text" name="text" id="text">
-        <button onclick="reset()">Restart</button>
-        <!-- <div class="show_score"></div> -->
+            this procedure is inefficient.</div> <!--Div where the text is written.-->
+        <input type="text" name="text" id="text"> <!--Input area, where the writing is done. -->
+        <button onclick="reset()">Restart</button> <!--Restart game button. -->
     </main>
 </body>
 
-<script src="index.js"></script>
+<script src="index.js"></script> <!--Linking the JavaScript here. -->
 
 </html>
