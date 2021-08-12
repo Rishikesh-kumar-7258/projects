@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #292929;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+}
+
+header, main, footer {
+  padding: 0 20px;
+}
+
+header {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% 75%;
+      grid-template-columns: 25% 75%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header nav a {
+  font-size: 1.4rem;
+  padding: 10px;
+  margin: 0 10px;
+  color: white;
+}
+
+header .profile {
+  --dim: 30px;
+  width: var(--dim);
+  height: var(--dim);
+  border-radius: 50%;
+  border: 1px solid #000;
+  background: #92a;
+}
+
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  place-items: center;
+  background-color: #069;
+}
+
+main h1 {
+  font-size: 2rem;
+  color: #0bf;
+  padding: 10px 0;
+  background: #420;
+}
+
+main section {
+  min-width: 300px;
+  background: #112;
+  text-align: center;
+}
+
+main section button {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  background: #aaa;
+  border: 1px solid #aaa;
+  font-weight: 1000;
+}
+
+main .routine {
+  height: auto;
+}
+
+main .routine .task_area {
+  overflow: hidden;
+}
+
+main .routine .task_area .task, main .routine .task_area .add {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  padding: 5px;
+  font-size: 1.5rem;
+  color: #aaa;
+  -webkit-box-shadow: inset 2px 2px #888888;
+          box-shadow: inset 2px 2px #888888;
+  background: #420;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+
+main .routine .task_area .task input, main .routine .task_area .add input {
+  width: 20px;
+  height: 20px;
+}
+
+main .routine .task_area .task::before {
+  content: "X";
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  background: #a00;
+  color: #fff;
+  font-weight: 1000;
+  left: -40px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+
+main .routine .task_area .task:hover {
+  -webkit-transform: translate(40px);
+          transform: translate(40px);
+}
+
+main .routine .task_area .add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .routine .task_area .add button {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  padding-left: 8px;
+}
+
+main .routine .task_area .add button span {
+  font-size: 1.5rem;
+  position: absolute;
+  left: 2px;
+}
+
+main .notes {
+  background: #420;
+  color: #0bf;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+  padding: 0 8px;
+}
+
+main .notes h1 {
+  padding: 10px;
+}
+
+main .notes ul {
+  text-align: left;
+  list-style-type: square;
+}
+
+main .notes ul li {
+  color: #aaa;
+  background: #854;
+  margin: 2px 0;
+  padding: 3px 8px;
+}
+
+main .notes ul li h3 {
+  color: #ccc;
+  font-size: 1.3rem;
+}
+
+main .notes button {
+  width: 50%;
+  padding: 5px;
+  margin: auto;
+}
+
+footer {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-color: #854;
+  padding: 10px;
+  color: darkblue;
+}
+/*# sourceMappingURL=index.css.map */

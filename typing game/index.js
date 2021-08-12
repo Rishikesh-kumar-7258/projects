@@ -130,9 +130,9 @@ let blink_interval = setInterval(() => {
     setTimeout(() => {
         if (i_span < PASSAGE_LENGTH)
             span[i_span].id = "blink";
-    }, 500);
+    }, 150);
 
-}, 400);
+}, 1000);
 
 // COUNTING THE AMOUNG OF TIME PASSED
 let count_interval = setInterval(() => {
