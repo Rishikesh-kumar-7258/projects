@@ -4,13 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d59016f14e.js" crossorigin="anonymous"></script>
     <title>My project</title>
+    <style>
+        body{
+            background : lightslategray;
+        }
+        .row a{
+            color : darkslateblue;
+            text-decoration: none;
+            font-weight: bolder;
+            text-align: center;
+            transition : transform 0.3s ease-in-out;
+        }
+        .row a:hover{
+            transform: scale(1.1);
+        }
+        .row a .card > div:first-child{
+            width : 100%;
+            display: grid;
+            place-items: center;
+            font-size: 10rem;
+        }
+        .card{
+            background : radial-gradient(white, orange);
+            box-shadow : 2px 2px 10px 3px #555;
+
+        }
+    </style>
 </head>
 <body>
-    <div class="list">
-        <a href="./typing game/index.html">Typing game</a>
-        <a href="./toDoList/index.html">ToDo list</a>
-        <a href="./smash-the-like-button/index.html">Smash the like button</a>
+    <div class="container p-5">
+        <div class="row g-5">
+            <a href="./ThanosSnap/index.html" class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="fas fa-fist-raised"></div>
+                    <div class="card-body">
+                        <div class="card-title">Thanos Snap</div>
+                    </div>
+                </div>
+            </a>
+            <a href="./smash-the-like-button/index.html" class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="fas fa-thumbs-up"></div>
+                    <div class="card-body">
+                        <div class="card-title">Smash the like button</div>
+                    </div>
+                </div>
+            </a>
+            <a href="./typing game/index.html" class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="fas fa-keyboard"></div>
+                    <div class="card-body">
+                        <div class="card-title">Typing game</div>
+                    </div>
+                </div>
+            </a>
+            <a href="./toDoList/index.html" class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="fas fa-sticky-note"></div>
+                    <div class="card-body">
+                        <div class="card-title">To Do list</div>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+
     </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
 </html>
