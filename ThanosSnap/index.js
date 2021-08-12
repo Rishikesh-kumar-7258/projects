@@ -60,3 +60,27 @@ block.addEventListener('click', () => {
 document.querySelector("button").addEventListener("click", () => {
     location.reload();
 })
+
+// // uploading the image
+// document.querySelector('form').addEventListener('submit', () => {
+
+//     let image = document.getElementById("this");
+//     console.log(image.);
+//     // readURL(image);
+
+// })
+
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+
+//         reader.onload = function (e) {
+//             $('#blah')
+//                 .attr('src', e.target.result)
+//                 .width(150)
+//                 .height(200);
+//         };
+
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
