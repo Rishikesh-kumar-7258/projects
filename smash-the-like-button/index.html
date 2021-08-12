@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        svg {
+            cursor: pointer;
+            overflow: visible;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .big {
+            transform: scale(1.1);
+        }
+
+        .one,
+        .two,
+        .three {
+            display: none;
+        }
+        .top,.bottom,.middle, .rect, .top-left{
+            transition: transform 0.5s linear;
+        }
+        
+        .explode.top
+        {
+            transform: translate(15vw, 15vh);
+        }
+        .explode.middle
+        {
+            transform: translate(-15vw, 15vh);
+        }
+        .explode.bottom
+        {
+            transform: translate(-15vw, -15vh);
+        }
+        .explode.top-left
+        {
+            transform: translate(15vw, -15vh);
+        }
+        .explode.rect
+        {
+            transform: translate(-25vw);
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="442" height="370" viewBox="0 0 442 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g class="rect">
+            <rect y="123" width="70" height="240" fill="black" />
+        </g>
+        <g class="top-left">
+            <path d="M433 197L394 126H265" stroke="black" stroke-width="20" />
+        </g>
+        <g class="top">
+            <path d="M360 365L431 191" stroke="black" stroke-width="20" />
+            <g class="one">
+                <path
+                    d="M363 355L318 340L305 294.5H318L275 243L318 258L305 226L337.5 215V189L380.5 202V189L397.5 174L432 189"
+                    stroke="black" stroke-width="10" />
+            </g>
+        </g>
+        <g class="middle">
+            <path d="M103 288.5V359.5H368" stroke="black" stroke-width="20" />
+            <g class="two">
+                <path d="M101 303.5H155L183 286.5L219.5 325V260.5H243V303.5H266.5L288 325L365.5 359.5" stroke="black"
+                    stroke-width="10" />
+            </g>
+        </g>
+        <g class="bottom">
+            <path d="M273.5 123.5V18L103.5 123.5V289" stroke="black" stroke-width="20" />
+            <g class="three">
+                <path d="M107.5 298L150.5 268L127 236H191.5L150.5 208H211L191.5 169H260.5L243 141L277.5 124"
+                    stroke="black" stroke-width="10" />
+            </g>
+        </g>
+    </svg>
+</body>
+
+<script>
+    let svg = document.querySelector("svg");
+    let click_count = 0;
+    let tp = document.querySelector(".top");
+    let middle = document.querySelector(".middle");
+    let bottom = document.querySelector(".bottom");
+    let one = document.querySelector(".one");
+    let two = document.querySelector(".two");
+    let three = document.querySelector(".three");
+    let rect = document.querySelector(".rect");
+    let topleft = document.querySelector(".top-left");
+
+    svg.addEventListener('click', () => {
+        click_count++;
+        if (click_count >= 12) {
+            tp.classList.add("explode");
+            middle.classList.add("explode");
+            bottom.classList.add("explode");
+            rect.classList.add("explode");
+            topleft.classList.add("explode");
+        } else if (click_count >= 9) {
+            one.style.display = "block";
+
+        } else if (click_count >= 6) {
+            two.style.display = "block";
+
+        } else if (click_count >= 3) {
+            three.style.display = "block";
+
+        }
+        svg.classList.add("big");
+    })
+
+    svg.addEventListener('transitionend', () => {
+        svg.classList.remove('big');
+    })
+
+</script>
+
+</html>
