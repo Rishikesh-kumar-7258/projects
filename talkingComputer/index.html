@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <title>Talking computer</title>
+    <style>
+        body{
+            width : 90%;
+            margin: 0 auto;
+        }
+        #text{
+            width : 100%;
+            height : 50vh;
+            margin-top: 20px;
+        }
+        button, input{
+            padding : 5px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="text"></textarea>
+    <label for="speed">Speed</label>
+    <input type="number" name="speed" id="speed" min="0.5" max="3" step="0.5" value="1">
+    <button id="playButton">Play</button>
+    <button id="pauseButton">Pause</button>
+    <button id="stopButton">Stop</button>
+</body>
+</html>
