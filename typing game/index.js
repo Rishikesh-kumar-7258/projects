@@ -1,5 +1,3 @@
-// console.log('This is a project which I am going to complete.')
-
 // Making local storage variables
 if (!localStorage.getItem("color"))
     localStorage.setItem('color',"black");

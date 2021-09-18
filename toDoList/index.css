@@ -1,0 +1,54 @@
+#cardarea{
+    width: 60vw;
+    margin: auto;
+}
+#notearea{
+    display: flex;
+    flex-wrap: wrap;
+}
+#notearea .card{
+    width: 45%;
+}
+#title{
+    height: 2rem;
+}
+#textarea{
+    height: 8rem;
+}
+@media screen and (max-width:1000px)
+{
+    #cardarea{
+        width: 90vw;
+    }
+
+    nav .form-inline{
+        flex-wrap: nowrap;
+    }
+    #notearea{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    #notearea .card{
+        width: auto;
+    }
+}
+@media screen and (max-width:550px)
+{
+    #cardarea{
+        width: 100vw;
+    }
+    #cardarea .card{
+        margin: 0 !important;
+    }
+    #cardarea .card{
+        width: 100% !important;
+    }
+
+    #notearea{
+        gap: 5px 0;
+        grid-template-columns: 1fr;
+    }
+    /* nav .form-inline{
+        flex-wrap: wrap;
+    } */
+}
