@@ -1,0 +1,24 @@
+{% include 'base.html' %}
+
+{% block title %}
+    <title>Note | {{ note.heading }}</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5 bg-dark p-3" style="width:50%;">
+    <form action="/edit/{{ note.sno }}" method="POST">
+        <div class="mb-3">
+            <label for="heading" class="form-label text-white">Heading</label>
+            <input type="text" class="form-control" id="heading" name="heading" value="{{note.heading}}">
+        </div>
+        <div class="mb-3">
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Write your note here" id="desc" name="desc"
+                    style="height:150px;">{{ note.desc }}</textarea>
+                <label for="desc">Write your note</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Change</button>
+    </form>
+</div>
+{% endblock body %}
