@@ -5,120 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d59016f14e.js" crossorigin="anonymous"></script>
     <title>Random Password Generator</title>
-    <style>
-        body {
-            margin: 0;
-            width: 100vw;
-            height: 100vh;
-            display: grid;
-            place-items: center;
-            background: #484848;
-            color: white;
-        }
-        .pdiv{
-            display : flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction : column;
-        }
-        p{
-            color : blue;
-            font-weight : 800;
-            font-size: 3rem;
-            border : 1px solid green;
-            /* width : 50%; */
-            background : lightblue;
-        }
-        button, input{
-            border : 1px solid green;
-            background : white;
-            color : green;
-            font-size : 2rem;
-        }
-        button:hover, button:active{
-            background-color: green;
-            color : white;
-            cursor : pointer;
-        }
-
-        @media screen and (max-width : 800)
-        {
-            body,
-            p,
-            button,
-            input{
-                font-size : 24px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <div class="pdiv">
         <p class="pass"></p>
+        <button class="clipboard-btn" title="copy to clipboard"><span class="fas fa-clipboard"></span></button>
     </div>
     <div class="settings">
         <h4>Enter length of Password</h4>
         <input type="number" name="len" id="len" min="8" max="25">
-        <button>Generate</button>
+        <button class="submit-btn">Generate</button>
     </div>
 </body>
-<script>
-    let pdiv = document.querySelector(".pass");
-    let natural = "0123456789";
-    let small = "abcdefghijklmnopqrstuvwxyz";
-    let cap = small.toUpperCase()
-    let special = "@#$%&";
 
-    let string = natural + small + cap + special;
-    let len = 8;
-
-    
-    function make_random(len)
-    {
-        let password = "";
-        let a = Math.random()*(natural.length-1);
-        password += natural.charAt(a);
-        a = Math.random()*(small.length-1);
-        password += small.charAt(a);
-        a = Math.random()*(cap.length-1);
-        password += cap.charAt(a);
-        a = Math.random()*(special.length-1);
-        password += special.charAt(a);
-    
-    
-        for (let i =0, n = len - password.length; i < n; i++)
-        {
-            a = Math.random()*(string.length-1);
-            password += string.charAt(a);
-        }
-        
-        let parr = [];
-        for (let i = 0; i < len; i++) parr.push(password.charAt(i));
-
-        for (let i = 0; i< len; i++)
-        {
-            a = parseInt(Math.random()*(len-i-1))
-            let temp = parr[i];
-            parr[i] = parr[i+a];
-            parr[i+a] = temp;
-        }
-        password = "";
-        for (let i = 0; i < len; i++) password += parr[i];
-        
-        pdiv.innerText = password;
-    }
-
-    let button = document.querySelector('button');
-    button.addEventListener('click', function(){
-        len = document.querySelector('#len').value || 8;
-
-        len = len < 8 ? 8 : len;
-        len = len > 25 ? 25 : len;
-        make_random(len)
-    })
-    make_random(len)
-</script>
+<script src="index.js"></script>
 
 </html>

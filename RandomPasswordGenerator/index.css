@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #484848;
+    color: white;
+}
+.pdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+p {
+    color: brown;
+    font-weight: 800;
+    font-size: 3rem;
+    border: 1px solid brown;
+    /* width : 50%; */
+    background: lightblue;
+}
+.submit-btn,
+input {
+    border: 1px solid brown;
+    background: white;
+    color: brown;
+    font-size: 2rem;
+}
+.submit-btn:hover,
+.submit-btn:active {
+    background-color: brown;
+    color: lightblue;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800) {
+    body,
+    p,
+    .submit-btn,
+    input {
+        font-size: 24px;
+    }
+}
+.clipboard-btn{
+    cursor : pointer;
+    border : 1px solid brown;
+}
+.clipboard-btn span{
+    color : brown;
+    font-size: 32px;
+    padding : 5px;
+
+}
+.clipboard-btn:hover{
+    background : brown;
+    color : white;
+}
+.clipboard-btn span:hover{
+    color : white;
+}
