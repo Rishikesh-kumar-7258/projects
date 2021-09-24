@@ -1,11 +1,10 @@
-let pdiv = document.querySelector(".pass");
 let natural = "0123456789";
 let small = "abcdefghijklmnopqrstuvwxyz";
 let cap = small.toUpperCase()
-let special = "@#$%&";
+let special = "~!@#$%^&*()_+}{[]|";
 
-let string = natural + small + cap + special;
-let len = 8;
+let string = natural + special + small + cap;
+let len = 12;
 
 
 function make_random(len) {
@@ -20,9 +19,24 @@ function make_random(len) {
     a = Math.random() * (special.length - 1);
     password += special.charAt(a);
 
-
-    for (let i = 0, n = len - password.length; i < n; i++) {
+    while (password.length < len)
+    {
         a = Math.random() * (string.length - 1);
+
+        let c = string.charAt(a);
+        let c_upper, c_lower;
+        if (/[^a-z]/.test(c)) 
+        {
+            c_upper = c.toUpperCase();
+            c_lower = c;
+        }
+        else if (/[A-Z]/.test(c))
+        {
+            c_upper = c;
+            c_lower = c.toLowerCase();
+        }
+        if (password.includes(c_upper) || password.includes(c_lower) || password.includes(c)) continue;
+
         password += string.charAt(a);
     }
 
@@ -38,20 +52,44 @@ function make_random(len) {
     password = "";
     for (let i = 0; i < len; i++) password += parr[i];
 
-    pdiv.innerText = password;
+    return password;
 }
 
-let button = document.querySelector('.submit-btn');
-button.addEventListener('click', function () {
-    len = document.querySelector('#len').value || 8;
+let passlen = document.querySelector(".passlen");
+passlen.addEventListener("input", function() {
+    if (this.value < 8)
+    {
+        this.classList.remove("is-valid");
+        this.classList.add("is-invalid");
+    } 
+    else {
+        this.classList.remove("is-invalid");
+        this.classList.add("is-valid");
+    }
+    len = this.value;
+})
 
+let passholder = document.querySelector(".passholder p");
+passholder.innerText = make_random(len)
+
+let generatebtn = document.querySelector(".generate-btn");
+
+generatebtn.addEventListener("click", function(){
+    
     len = len < 8 ? 8 : len;
     len = len > 25 ? 25 : len;
-    make_random(len)
+    passholder.innerText = make_random(len);
 })
-make_random(len)
 
-let btn2 = document.querySelector(".clipboard-btn");
-btn2.addEventListener("click", function(){
-    navigator.clipboard.writeText(pdiv.innerText)
+let copybtn = document.querySelector(".fa-clipboard");
+copybtn.addEventListener("click", function(){
+    navigator.clipboard.writeText(passholder.innerText);
+
+    this.classList.remove("fa-clipboard");
+    this.innerText = "Copied";
+
+    setTimeout(() => {
+        this.classList.add("fa-clipboard");
+        this.innerText = "";
+    }, 1000);
 })
