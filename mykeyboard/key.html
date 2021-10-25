@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY Keyboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="key.css">
+</head>
+<body>
+    <section id="warea">
+        <textarea class="form-control my-3" aria-label="With textarea" id="parea"></textarea>
+        <button type="button" class="btn btn-outline-dark" id="actkey">Keyboard</button>
+    </section>
+
+    <section id="keyboard">
+        <div id="row1">
+            <input type="button" value="esc" class="key" onclick="add('')">
+            <input type="button" value="f1" class="key" onclick="add('')">
+            <input type="button" value="f2" class="key" onclick="add('')">
+            <input type="button" value="f3" class="key" onclick="add('')">
+            <input type="button" value="f4" class="key" onclick="add('')">
+            <input type="button" value="f5" class="key" onclick="add('')">
+            <input type="button" value="f6" class="key" onclick="add('')">
+            <input type="button" value="f7" class="key" onclick="add('')">
+            <input type="button" value="f8" class="key" onclick="add('')">
+            <input type="button" value="f9" class="key" onclick="add('')">
+            <input type="button" value="f10" class="key" onclick="add('')">
+            <input type="button" value="f11" class="key" onclick="add('')">
+            <input type="button" value="f12" class="key" onclick="add('')">
+            <input type="button" value="prtscr" class="key" onclick="add('')">
+            <input type="button" value="insert" class="key" onclick="add('')">
+            <input type="button" value="delete" class="key" onclick="add('')">
+            <!-- <input type="button" value="pgup" class="key" onclick="add(this)">
+            <input type="button" value="pgdn" class="key" onclick="add(this)">
+            <input type="button" value="home" class="key" onclick="add(this)">
+            <input type="button" value="end" class="key" onclick="add(this)"> -->
+        </div>
+        <div id="row2">
+            <input type="button" value="~" class="key" onclick="add('`','~')">
+            <input type="button" value="1" class="key" onclick="add('1','!')">
+            <input type="button" value="2" class="key" onclick="add('2','@')">
+            <input type="button" value="3" class="key" onclick="add('3','#')">
+            <input type="button" value="4" class="key" onclick="add('4','$')">
+            <input type="button" value="5" class="key" onclick="add('5','%')">
+            <input type="button" value="6" class="key" onclick="add('6','^')">
+            <input type="button" value="7" class="key" onclick="add('7','&')">
+            <input type="button" value="8" class="key" onclick="add('8','*')">
+            <input type="button" value="9" class="key" onclick="add('9','(')">
+            <input type="button" value="0" class="key" onclick="add('0',')')">
+            <input type="button" value="-" class="key" onclick="add('-','_')">
+            <input type="button" value="=" class="key" onclick="add('=','+')">
+            <input type="button" value="backspace" class="key" onclick="add('backspace','')">
+            <!-- <input type="button" value="numlock" class="key" onclick="add(this)">
+            <input type="button" value="/" class="key" onclick="add(this)">
+            <input type="button" value="*" class="key" onclick="add(this)">
+            <input type="button" value="-" class="key" onclick="add(this)"> -->
+        </div>
+        <div id="row3">
+            <input type="button" value="tab" class="key" onclick="add('    ','')">
+            <input type="button" value="q" class="key" onclick="add('q','Q')">
+            <input type="button" value="w" class="key" onclick="add('w','W')">
+            <input type="button" value="e" class="key" onclick="add('e','E')">
+            <input type="button" value="r" class="key" onclick="add('r','R')">
+            <input type="button" value="t" class="key" onclick="add('t','T')">
+            <input type="button" value="y" class="key" onclick="add('y','Y')">
+            <input type="button" value="u" class="key" onclick="add('u','U')">
+            <input type="button" value="i" class="key" onclick="add('i','I')">
+            <input type="button" value="o" class="key" onclick="add('o','O')">
+            <input type="button" value="p" class="key" onclick="add('p','P')">
+            <input type="button" value="{" class="key" onclick="add('[','{')">
+            <input type="button" value="}" class="key" onclick="add(']','}')">
+            <input type="button" value="|" class="key" onclick="add('\\','|')">
+        </div>
+        <div id="row4">
+            <input type="button" value="caps" class="key" onclick="add('caps','')">
+            <input type="button" value="a" class="key" onclick="add('a','A')">
+            <input type="button" value="s" class="key" onclick="add('s','S')">
+            <input type="button" value="d" class="key" onclick="add('d','D')">
+            <input type="button" value="f" class="key" onclick="add('f','F')">
+            <input type="button" value="g" class="key" onclick="add('g','G')">
+            <input type="button" value="h" class="key" onclick="add('h','H')">
+            <input type="button" value="j" class="key" onclick="add('j','J')">
+            <input type="button" value="k" class="key" onclick="add('k','K')">
+            <input type="button" value="l" class="key" onclick="add('l','L')">
+            <input type="button" value=";" class="key" onclick="add(';',':')">
+            <input type="button" value="''" class="key" onclick="add(`'`,``)">
+            <input type="button" value="enter" class="key" onclick="add('')">
+        </div>
+        <div id="row5">
+            <input type="button" value="shift" onclick="add('shift')" class="key">
+            <input type="button" value="z" onclick="add('z')" class="key">
+            <input type="button" value="x" onclick="add('x')" class="key">
+            <input type="button" value="c" onclick="add('c')" class="key">
+            <input type="button" value="v" onclick="add('v')" class="key">
+            <input type="button" value="b" onclick="add('b')" class="key">
+            <input type="button" value="n" onclick="add('n')" class="key">
+            <input type="button" value="m" onclick="add('m')" class="key">
+            <input type="button" value="," onclick="add(',')" class="key">
+            <input type="button" value="." onclick="add('.')" class="key">
+            <input type="button" value="/" onclick="add('/')" class="key">
+            <input type="button" value="shift" onclick="add('shift')" class="key">
+        </div>
+        <div id="row6">
+            <input type="button" value="ctrl" onclick="add('')" class="key">
+            <input type="button" value="fn" onclick="add('')" class="key">
+            <input type="button" value="windows" onclick="add('')" class="key">
+            <input type="button" value="alt" onclick="add('')" class="key">
+            <input type="button" value="spacebar" onclick="add(' ')" class="key">
+            <input type="button" value="alt" onclick="add('')" class="key">
+            <input type="button" value="ctrl" onclick="add('')" class="key">
+            <div id="arrow">
+                <input type="button" value="up" onclick="add('')" class="key">
+                <input type="button" value="down" onclick="add('')" class="key">
+                <input type="button" value="right" onclick="add('')" class="key">
+                <input type="button" value="left" onclick="add('')" class="key">
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+     crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+     crossorigin="anonymous"></script>
+    <script src="key.js"></script>
+</body>
+</html>
