@@ -1,29 +1,25 @@
-// Getting different elements from DOM
-const playButton = document.getElementById("playButton");
-const pauseButton = document.getElementById("pauseButton");
-const stopButton = document.getElementById("stopButton");
-let text = document.getElementById("text");
-let speed = document.getElementById("speed").value;
+let textarea = document.querySelector("textarea");
+let speed = document.querySelector("#speed").value;
+let playbtn = document.querySelector(".play");
+let stopbtn = document.querySelector(".stop");
 
-// Adding click functionality to play the text sound
-playButton.addEventListener('click', () => {
-    playText(text.value);
-});
+let synth = window.SpeechSynthesis;
+// console.log(synth.getVoices());
 
-// function pauseText to stop the playing sound
-const pauseText = () => {
-    if (speechSynthesis.speaking) speechSynthesis.pause();
-}
+let utter = new SpeechSynthesisUtterance();
 
-// Adding click functinality as an argument to pause the text
-pauseButton.addEventListener('click', pauseText);
+playbtn.addEventListener("click", function () {
 
-// function playText takes text as an argument and plays that text
-const playText = text => {
-    let utter = new SpeechSynthesisUtterance();
-    // if (speechSynthesis.paused) return speechSynthesis.speak(utter);
-    utter.lang = "en";
-    utter.text = text;
-    utter.rate = speed || 1;
-    window.speechSynthesis.speak(utter);
-}
+    // toggling play and pause functionality
+    let span = document.querySelector(".play span");
+
+    span.classList.toggle("fa-play");
+    span.classList.toggle("fa-pause");
+
+    utter.text = textarea.value;
+    synth.speak(utter);
+
+})
+stopbtn.addEventListener("click", function () {
+    console.log("stopbtn is clicked");
+})
