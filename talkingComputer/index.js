@@ -17,6 +17,8 @@ playbtn.addEventListener("click", function () {
     span.classList.toggle("fa-pause");
 
     utter.text = textarea.value;
+    utter.rate = 3;
+    utter.volume = 4;
     synth.speak(utter);
 
 })
