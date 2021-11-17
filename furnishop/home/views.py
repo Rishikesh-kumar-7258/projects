@@ -15,7 +15,7 @@ def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        number = request.POSt.get('number')
+        number = request.POST.get('number')
         message = request.POST.get('message')
 
         contact = Contact(name=name, email=email, number=number, message=message)
