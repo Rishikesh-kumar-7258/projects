@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,6 +10,7 @@ from api.models import Task
 @api_view(['GET']) # used this method to convert it into an api
 def apiOverview(request):
     urls = {
+        'ListAdd' : 'taskAdd/',
         'ListView' : 'taskList/',
         'TaskView':'taskView/',
         'TaskEdit' : 'taskEdit/',
@@ -30,7 +31,7 @@ def taskView(request, pk):
 
     return Response(serializer.data)
 
-@api_view(['GET, POST'])
+@api_view(['GET', 'POST'])
 def taskEdit(request, pk):
     task = Task.objects.get(id=pk)
     serializer = serializers.TaskSerializer(instance=task, data=request.data)
@@ -38,3 +39,17 @@ def taskEdit(request, pk):
         serializer.save()
     return Response(serializer.data)
 
+@api_view(['GET', 'POST'])
+def taskDelete(request, pk):
+    task = Task.objects.get(id=pk)
+    task.delete()
+
+    return redirect('/taskList/')
+
+
+@api_view(['POST'])
+def taskAdd(request):
+    serializer = serializers.TaskSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
