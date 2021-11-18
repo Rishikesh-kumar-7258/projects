@@ -31,7 +31,7 @@ def taskView(request, pk):
 
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def taskEdit(request, pk):
     task = Task.objects.get(id=pk)
     serializer = serializers.TaskSerializer(instance=task, data=request.data)
@@ -39,7 +39,7 @@ def taskEdit(request, pk):
         serializer.save()
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def taskDelete(request, pk):
     task = Task.objects.get(id=pk)
     task.delete()
