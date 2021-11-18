@@ -11,4 +11,6 @@ There are two steps involved in this process:
 
     2. Rendering views using React.js as front-end
         componentDidMount in reactcycle is a lifecycle method
-        
+        For every step we need to call the api method we created using the Django
+        Then we need to bring the frontend in the same directory as our project.
+        and run build command to make the frontend.

@@ -39,12 +39,12 @@ def taskEdit(request, pk):
         serializer.save()
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST', 'DELETE'])
 def taskDelete(request, pk):
     task = Task.objects.get(id=pk)
     task.delete()
 
-    return redirect('/taskList/')
+    return Response("Task Deleted Successfully")
 
 
 @api_view(['POST'])
