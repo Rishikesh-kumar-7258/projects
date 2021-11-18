@@ -1,0 +1,11 @@
+We are going to create a to-do list app. In which we will be able to do basic CRUD taks.
+CRUD - create, Read, Update, Delete
+
+We are going to use Django as backend and react.js as frontend for this project.
+There are two steps involved in this process:
+    1. Making an api using Django as backend
+        made a new app api
+        we add url in urls.py file
+        added new app api in settings
+
+    2. Rendering views using React.js as front-end
