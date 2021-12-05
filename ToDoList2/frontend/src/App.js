@@ -159,7 +159,7 @@ class App extends Component {
                 <input type="title" onInput={this.handleChange} class="form-control" value={this.state.activeItem.title} id="titel" placeholder="Enter title"/>
                 <label for="title">Enter the task</label>
               </div>
-              <input type="submit" value="Add" className="btn btn-success fw-bolder form-control" style={{flex:2}}/>
+              <input type="submit" value="Add" className="btn btn-success fw-bolder" style={{flex:2}}/>
             </form>
           </li>
           
