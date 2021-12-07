@@ -2,15 +2,19 @@
 from flask.templating import render_template
 import gtts
 from playsound import playsound
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    t1 = gtts.gTTS("Hello Abhigyan, How are you? Have you eaten? How is everyone in house?")
-    t1.save("static/welcome2.mp3")
+@app.route('/', methods=['GET', 'POST'])
+def home():
+
+    if request.method == 'POST':
+        text = request.form['text']
+        tts = gtts.gTTS(text=text, lang='en')
+        tts.save('static/sound/result.mp3')
     # playsound("welcome.mp3")
+        return render_template("index.html")
     return render_template("index.html")
 
 if __name__ == '__main__':

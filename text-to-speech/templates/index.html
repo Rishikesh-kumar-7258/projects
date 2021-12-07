@@ -37,19 +37,22 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <form>
-            <h2>Enter your text here</h2>
+        <form method="post" enctype="multipart/form-data">
+            <h4>Enter your text here</h4>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                <textarea class="form-control" placeholder="Leave a comment here" id="text" name="text"
                     style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Comments</label>
+                <label for="text">Comments</label>
             </div>
+            <input type="submit" class="btn btn-primary my-3" value="Submit"/>
         </form>
     </div>
-    <h1>Click to play the sound</h1>
-    <audio controls>
-        <source src="{{ url_for('static', filename='sound/welcome2.mp3') }}" type="audio/mp3">
-    </audio>
+    <div class="container-fluid">
+        <h4>Click to play the sound</h4>
+        <audio controls>
+            <source src="{{ url_for('static', filename='sound/result.mp3') }}" type="audio/mp3">
+        </audio>
+    </div>
 </body>
 
 </html>
