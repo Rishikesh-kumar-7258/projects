@@ -1,0 +1,10 @@
+{% include 'base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <h4>Click to play the sound</h4>
+    <audio controls>
+        <source src="{{ url_for('static', filename='sound/result.mp3') }}" type="audio/mp3">
+    </audio>
+</div>
+{% endblock body %}
