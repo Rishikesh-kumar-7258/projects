@@ -1,0 +1,28 @@
+.bar{
+    background : linear-gradient(to bottom, darkblue, blue);
+    width : 20px;
+    border : 1px solid red;
+}
+.active{
+    background : linear-gradient(to bottom, darkgreen, green);
+}
+
+.selected{
+    background : linear-gradient(to bottom, darkred, red);
+}
+
+#bar_area{
+    position: fixed;
+    display : flex;
+    align-items: baseline;
+    justify-content: center;
+    bottom : 10px;
+}
+
+#bottom_line{
+    position: fixed;
+    bottom : 0;
+    width : 100%;
+    height : 10px;
+    background : black;
+}
