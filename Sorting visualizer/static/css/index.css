@@ -17,12 +17,12 @@
     align-items: baseline;
     justify-content: center;
     bottom : 10px;
+    background : radial-gradient(circle, rgb(255, 255, 255), rgb(126, 126, 211));
 }
 
 #bottom_line{
     position: fixed;
     bottom : 0;
-    width : 100%;
     height : 10px;
     background : black;
 }
