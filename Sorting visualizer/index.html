@@ -31,7 +31,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item mx-2">
+                    <li class="nav-item">
+                        <select name="sorting_type" id="sorting_type" class="form-select">
+                            <option value="selection sort">selection sort</option>
+                            <option value="Bubble sort">Bubble sort</option>
+                            <option value="Insertion sort">Insertion sort</option>
+                        </select>
+                    </li>
+                    <li class="nav-item">
                         <select class="form-select" name="speed" id="speed">
                             <option value="Fast">Fast</option>
                             <option value="Medium">Medium</option>
@@ -69,15 +76,25 @@
 
                     </li>
 
+                    <li class="nav-item">
+                        <div class="form-floating">
+                            <input type="range" name="size" id="size" min="5" max="100" step="1" value="10">
+                            <label for="size" class="text-white">Size of array</label>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="container-fluid w-100">
-        <div id="bar_area" class="container border p-2 pb-0"></div>
-        <div id="bottom_line" class="container"></div>
-        <button id="start_btn" class="btn btn-success m-3">Start</button>
+    <section class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 p-3">
+                <button id="start_btn" class="btn btn-success">Start</button>
+            </div>
+            <div id="bar_area" class="col-12 d-flex"></div>
+        </div>
     </section>
 </body>
 

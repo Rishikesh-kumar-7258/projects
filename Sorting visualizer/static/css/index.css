@@ -1,28 +1,25 @@
 .bar{
-    background : linear-gradient(to bottom, darkblue, blue);
+    background : linear-gradient(to bottom, #00008b, #0000ff);
     width : 20px;
-    border : 1px solid red;
+    border : 1px solid #ff0000;
 }
 .active{
-    background : linear-gradient(to bottom, darkgreen, green);
+    background : linear-gradient(to bottom, #006400, #008000)
 }
 
 .selected{
-    background : linear-gradient(to bottom, darkred, red);
+    background : linear-gradient(to bottom, #8b0000, #ff0000);
 }
 
 #bar_area{
-    position: fixed;
     display : flex;
     align-items: baseline;
     justify-content: center;
-    bottom : 10px;
-    background : radial-gradient(circle, rgb(255, 255, 255), rgb(126, 126, 211));
+    /* bottom : 10px; */
+    background : radial-gradient(circle, #ffffff, #7e7ed3);
+    border-bottom: 10px solid #000000;
 }
 
-#bottom_line{
-    position: fixed;
-    bottom : 0;
-    height : 10px;
-    background : black;
+.nav-item{
+    margin : 5px;
 }

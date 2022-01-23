@@ -1,9 +1,10 @@
 // const message : string = "Om";
 
-const arr: Array<number> = [5, 3, 2, 4, 1, 9, 7, 8, 6];
+let arr: Array<number>;
 let ranged_arr : Array<number>;
-enum Speed {fast=100, medium=500, slow=1000}
+enum Speed {fast=10, medium=50, slow=100}
 let speed : Speed = Speed.fast;
+let size : number = 10;
 
 
 const bar_area = document.querySelector("#bar_area");
@@ -38,15 +39,33 @@ const convertRange  = (arr : Array<number>, from : number, to : number) => {
     return ans;
 }
 
+// Function to make a random array
+const makeRandom = (size : number) => {
+    let ans : Array<number> = [];
+
+    for (let i = 0; i < size; i++) ans.push(i+1);
+
+    for (let i = 0; i < size; i++)
+    {
+        let curr : number = Math.round(Math.random() * (size - i - 1)) + i;
+
+        let temp = ans[i];
+        ans[i] = ans[curr];
+        ans[curr] = temp;
+    }
+
+    return ans;
+}
+
+arr = makeRandom(size);
 ranged_arr = convertRange(arr, 10, 400);
 AddBars(ranged_arr);
 
 // Fuction for sorting using selection sort
-const BubbleSort = (arr : Array<number>,speed : Speed) => {
+const selectionSort = (arr : Array<number>,speed : Speed) => {
     let max_index = 0;
     let curr_bar = document.querySelector("#bar_0");
     let max_bar = document.querySelector("#bar_0");
-    let swap_cnt: number = 0;
 
     let i = 0, j = 0, n = arr.length;
     let interval = setInterval(() => {
@@ -87,11 +106,83 @@ const BubbleSort = (arr : Array<number>,speed : Speed) => {
 
 }
 
+// function for sorting using Bubble sort
+const bubbleSort = (arr : Array<number>, speed : Speed) => {
+    let n : number = arr.length;
+    let i : number = 0, j : number = 0, swapped : boolean = false;
+    let curr_bar = document.querySelector("#bar_0");
+
+    let interval = setInterval(() => {
+
+        if (i >= n - 1 || (i > 0 && swapped === false)) {
+            curr_bar.classList.remove('active');
+            clearInterval(interval);
+            return;
+        }
+
+        if (j >= n - i) {
+            i++;
+            j = 0;
+        }
+
+        if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+
+            swapped = true;
+
+            AddBars(ranged_arr);
+        }
+
+        if (curr_bar) curr_bar.classList.remove('active');
+        curr_bar = document.querySelector(`#bar_${j}`);
+        curr_bar.classList.add('active');
+
+        j++;
+
+    }, speed);
+}
+
+// function for sorting using insertion sort
+// const insertionSort = (arr : Array<number>, speed : Speed) => {
+//     let i : number = 0, j : number = 0, n : number = arr.length;
+//     let interval = setInterval(() => {
+
+//         if (i >= n) {
+//             clearInterval(interval);
+//             return;
+//         }
+
+//         if (j >= n - i) {
+//             i++;
+//             j = 0;
+//         }
+
+//         if (arr[j] > arr[j + 1]) {
+//             let temp = arr[j];
+//             arr[j] = arr[j + 1];
+//             arr[j + 1] = temp;
+
+//             AddBars(ranged_arr);
+//         }
+
+//         j++;
+
+//     }, speed);
+// }
+
 
 // Activating start Button
 const start_btn = document.querySelector("#start_btn");
 start_btn.addEventListener('click', () => {
-    BubbleSort(ranged_arr,speed);
+
+    const sorting_type = document.querySelector("#sorting_type") as HTMLSelectElement;
+
+    if (sorting_type.value === "Selection sort") selectionSort(ranged_arr,speed);
+    else if (sorting_type.value === 'Bubble sort') bubbleSort(ranged_arr,speed);
+    // else if (sorting_type.value === 'Insertion sort') insertionSort(ranged_arr,speed);
+
 })
 
 // Changing speed
@@ -111,11 +202,21 @@ array_save_btn.addEventListener('click', () => {
 
     let input_arr = area.value.split(" ");
 
-    let input_arr_num : Array<number> = [];
+    arr = [];
     input_arr.forEach((element) => {
-        input_arr_num.push(parseFloat(element));
+        arr.push(parseFloat(element));
     })
 
-    ranged_arr = convertRange(input_arr_num, 10, 400);
+    ranged_arr = convertRange(arr, 10, 400);
+    AddBars(ranged_arr);
+})
+
+// Changing size of the list
+const slider = document.querySelector("#size") as HTMLInputElement;
+slider.addEventListener('change', () => {
+    console.log(slider.value);
+    size = parseInt(slider.value);
+    arr = makeRandom(size);
+    ranged_arr = convertRange(arr, 10, 400);
     AddBars(ranged_arr);
 })
