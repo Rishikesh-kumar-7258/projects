@@ -63,43 +63,43 @@ AddBars(ranged_arr);
 
 // Fuction for sorting using selection sort
 const selectionSort = (arr : Array<number>,speed : Speed) => {
-    let max_index = 0;
+    let min_index = 0;
     let curr_bar = document.querySelector("#bar_0");
-    let max_bar = document.querySelector("#bar_0");
+    let min_bar = document.querySelector("#bar_0");
 
     let i = 0, j = 0, n = arr.length;
     let interval = setInterval(() => {
 
         if (i >= n - 1) {
             curr_bar.classList.remove('active');
-            max_bar.classList.remove('selected');
+            min_bar.classList.remove('selected');
             clearInterval(interval);
             return;
         }
 
-        if (j >= n - i) {
+        if (j >= n) {
 
             // Swapping the bars
-            let temp = arr[n - i - 1];
-            arr[n - i - 1] = arr[max_index];
-            arr[max_index] = temp;
+            let temp = arr[i];
+            arr[i] = arr[min_index];
+            arr[min_index] = temp;
 
             AddBars(ranged_arr);
 
             i++;
-            j = 0;
-            max_index = 0;
+            j = i;
+            min_index = j;
         }
 
-        if (arr[j] > arr[max_index]) max_index = j;
+        if (arr[j] < arr[min_index]) min_index = j;
 
         if (curr_bar) curr_bar.classList.remove('active');
         curr_bar = document.querySelector(`#bar_${j}`);
         curr_bar.classList.add('active');
 
-        if (max_bar) max_bar.classList.remove('selected');
-        max_bar = document.querySelector(`#bar_${max_index}`);
-        max_bar.classList.add('selected');
+        if (min_bar) min_bar.classList.remove('selected');
+        min_bar = document.querySelector(`#bar_${min_index}`);
+        min_bar.classList.add('selected');
 
         j++;
     }, speed);
@@ -120,7 +120,7 @@ const bubbleSort = (arr : Array<number>, speed : Speed) => {
             return;
         }
 
-        if (j >= n - i) {
+        if (j >= n - i-1) {
             i++;
             j = 0;
         }
@@ -145,32 +145,32 @@ const bubbleSort = (arr : Array<number>, speed : Speed) => {
 }
 
 // function for sorting using insertion sort
-// const insertionSort = (arr : Array<number>, speed : Speed) => {
-//     let i : number = 0, j : number = 0, n : number = arr.length;
-//     let interval = setInterval(() => {
+const insertionSort = (arr : Array<number>, speed : Speed) => {
+    let i : number = 0, j : number = 1, n : number = arr.length;
+    let interval = setInterval(() => {
 
-//         if (i >= n) {
-//             clearInterval(interval);
-//             return;
-//         }
+        if (i >= n) {
+            clearInterval(interval);
+            return;
+        }
 
-//         if (j >= n - i) {
-//             i++;
-//             j = 0;
-//         }
+        if (j <= 0 || arr[j] > arr[j-1]) {
+            i++;
+            j = i+1;
+        }
 
-//         if (arr[j] > arr[j + 1]) {
-//             let temp = arr[j];
-//             arr[j] = arr[j + 1];
-//             arr[j + 1] = temp;
+        if (arr[j] < arr[j - 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
 
-//             AddBars(ranged_arr);
-//         }
+            AddBars(ranged_arr);
+        }
 
-//         j++;
+        j--;
 
-//     }, speed);
-// }
+    }, speed);
+}
 
 
 // Activating start Button
@@ -180,8 +180,8 @@ start_btn.addEventListener('click', () => {
     const sorting_type = document.querySelector("#sorting_type") as HTMLSelectElement;
 
     if (sorting_type.value === "Selection sort") selectionSort(ranged_arr,speed);
-    else if (sorting_type.value === 'Bubble sort') bubbleSort(ranged_arr,speed);
-    // else if (sorting_type.value === 'Insertion sort') insertionSort(ranged_arr,speed);
+    else if (sorting_type.value === 'Bubble sort') bubbleSort(ranged_arr,speed/2);
+    else if (sorting_type.value === 'Insertion sort') insertionSort(ranged_arr,speed);
 
 })
 
