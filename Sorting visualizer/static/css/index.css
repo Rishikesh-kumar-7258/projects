@@ -11,6 +11,10 @@
     background : linear-gradient(to bottom, #8b0000, #ff0000);
 }
 
+.curr_i{
+    background : linear-gradient(to bottom, darkgoldenrod, goldenrod);
+}
+
 #bar_area{
     display : flex;
     align-items: baseline;

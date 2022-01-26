@@ -142,6 +142,9 @@ var insertionSort = function (arr, speed) {
 var quickSort = function (arr, l, h, speed) {
     var st = [];
     var top = -1;
+    var currBar = document.querySelector("#bar_0");
+    var pivotBar = document.querySelector("#bar_" + h);
+    var currI;
     st[++top] = l;
     st[++top] = h;
     var i = -1, j = 0, pivot = arr[h];
@@ -181,6 +184,18 @@ var quickSort = function (arr, l, h, speed) {
             }
             j++;
         }
+        if (currBar)
+            currBar.classList.remove('active');
+        currBar = document.querySelector("#bar_".concat(j));
+        currBar.classList.add('active');
+        if (pivotBar)
+            pivotBar.classList.remove('selected');
+        pivotBar = document.querySelector("#bar_".concat(h));
+        pivotBar.classList.add('selected');
+        if (currI)
+            currI.classList.remove('curr_i');
+        currI = document.querySelector("#bar_".concat(i));
+        currI.classList.add('curr_i');
     }, speed);
 };
 // Activating start Button
@@ -190,7 +205,7 @@ start_btn.addEventListener('click', function () {
     if (sorting_type.value === "Selection")
         selectionSort(ranged_arr, speed);
     else if (sorting_type.value === 'Bubble')
-        bubbleSort(ranged_arr, speed / 2);
+        bubbleSort(ranged_arr, speed);
     else if (sorting_type.value === 'Insertion')
         insertionSort(ranged_arr, speed);
     else if (sorting_type.value === "Quick")

@@ -176,6 +176,10 @@ const quickSort = (arr: Array<number>, l : number, h : number, speed: number) =>
     let st : Array<number> = [];
     let top : number = -1;
 
+    let currBar = document.querySelector("#bar_0");
+    let pivotBar = document.querySelector("#bar_" + h);
+    let currI : HTMLDivElement;
+
     st[++top] = l;
     st[++top] = h;
 
@@ -233,7 +237,19 @@ const quickSort = (arr: Array<number>, l : number, h : number, speed: number) =>
     
             j++;
         }
-        
+
+        if (currBar) currBar.classList.remove('active');
+        currBar = document.querySelector(`#bar_${j}`);
+        currBar.classList.add('active');
+
+        if (pivotBar) pivotBar.classList.remove('selected');
+        pivotBar = document.querySelector(`#bar_${h}`);
+        pivotBar.classList.add('selected');
+
+        if(currI) currI.classList.remove('curr_i');
+        currI = document.querySelector(`#bar_${i}`);
+        currI.classList.add('curr_i');
+
     }, speed)
 
 }
@@ -246,7 +262,7 @@ start_btn.addEventListener('click', () => {
     const sorting_type = document.querySelector("#sorting_type") as HTMLSelectElement;
 
     if (sorting_type.value === "Selection") selectionSort(ranged_arr, speed);
-    else if (sorting_type.value === 'Bubble') bubbleSort(ranged_arr, speed / 2);
+    else if (sorting_type.value === 'Bubble') bubbleSort(ranged_arr, speed);
     else if (sorting_type.value === 'Insertion') insertionSort(ranged_arr, speed);
     else if (sorting_type.value === "Quick") quickSort(ranged_arr,0, ranged_arr.length-1, speed);
 
