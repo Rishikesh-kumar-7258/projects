@@ -138,16 +138,63 @@ var insertionSort = function (arr, speed) {
         j--;
     }, speed);
 };
+// Quick sort algorithm
+var quickSort = function (arr, l, h, speed) {
+    var st = [];
+    var top = -1;
+    st[++top] = l;
+    st[++top] = h;
+    var i = -1, j = 0, pivot = arr[h];
+    var interval = setInterval(function () {
+        if (top < 0) {
+            AddBars(arr);
+            clearInterval(interval);
+            return;
+        }
+        if (j > h) {
+            var temp = arr[i + 1];
+            arr[i + 1] = arr[h];
+            arr[h] = temp;
+            if (i > l) {
+                st[++top] = l;
+                st[++top] = i;
+            }
+            if (i + 2 < h) {
+                st[++top] = i + 2;
+                st[++top] = h;
+            }
+            h = st[top--];
+            l = st[top--];
+            AddBars(arr);
+            console.log(arr);
+            pivot = arr[h];
+            j = l;
+            i = j - 1;
+        }
+        else {
+            if (arr[j] < pivot) {
+                i++;
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                AddBars(arr);
+            }
+            j++;
+        }
+    }, speed);
+};
 // Activating start Button
 var start_btn = document.querySelector("#start_btn");
 start_btn.addEventListener('click', function () {
     var sorting_type = document.querySelector("#sorting_type");
-    if (sorting_type.value === "Selection sort")
+    if (sorting_type.value === "Selection")
         selectionSort(ranged_arr, speed);
-    else if (sorting_type.value === 'Bubble sort')
+    else if (sorting_type.value === 'Bubble')
         bubbleSort(ranged_arr, speed / 2);
-    else if (sorting_type.value === 'Insertion sort')
+    else if (sorting_type.value === 'Insertion')
         insertionSort(ranged_arr, speed);
+    else if (sorting_type.value === "Quick")
+        quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
 });
 // Changing speed
 var speed_select = document.querySelector("#speed");
