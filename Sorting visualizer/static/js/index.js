@@ -198,6 +198,44 @@ var quickSort = function (arr, l, h, speed) {
         currI.classList.add('curr_i');
     }, speed);
 };
+// Merge sort algorithm
+var merge = function (arr, l, m, h, speed) {
+    var i = 0, j = 0, k = 0;
+    var L = arr.slice(l, m + 1);
+    var R = arr.slice(m + 1, h + 1);
+    var n1 = m - l + 1;
+    var n2 = h - m;
+    var interval = setInterval(function () {
+        if (i >= n1 || j >= n2) {
+            if (i < n1)
+                arr[l + k] = L[i++];
+            if (j < n2)
+                arr[l + k] = R[j++];
+            if (i >= n1 && j >= n2) {
+                clearInterval(interval);
+                return;
+            }
+        }
+        if (L[i] <= R[j]) {
+            arr[l + k] = L[i];
+            i++;
+        }
+        else {
+            arr[l + k] = R[j];
+            j++;
+        }
+        k++;
+        AddBars(arr);
+    }, speed);
+};
+var mergeSort = function (arr, l, h, speed) {
+    if (l < h) {
+        var m = Math.floor((l + h) / 2);
+        mergeSort(arr, l, m, speed);
+        mergeSort(arr, m + 1, h, speed);
+        merge(arr, l, m, h, speed);
+    }
+};
 // Activating start Button
 var start_btn = document.querySelector("#start_btn");
 start_btn.addEventListener('click', function () {
@@ -210,6 +248,8 @@ start_btn.addEventListener('click', function () {
         insertionSort(ranged_arr, speed);
     else if (sorting_type.value === "Quick")
         quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+    else if (sorting_type.value === "Merge")
+        mergeSort(ranged_arr, 0, ranged_arr.length - 1, speed);
 });
 // Changing speed
 var speed_select = document.querySelector("#speed");

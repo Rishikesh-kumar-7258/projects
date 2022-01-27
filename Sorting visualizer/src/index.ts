@@ -254,6 +254,61 @@ const quickSort = (arr: Array<number>, l : number, h : number, speed: number) =>
 
 }
 
+// Merge sort algorithm
+const merge = (arr: Array<number>, l : number, m : number, h : number, speed: number) => {
+    
+        let i : number = 0, j : number = 0, k : number = 0;
+        let L = arr.slice(l, m+1);
+        let R = arr.slice(m+1, h+1);
+
+        let n1 = m - l + 1;
+        let n2 = h - m;
+    
+        let interval = setInterval(() => {
+    
+            if (i >= n1 || j >= n2)
+            {
+                if (i < n1) arr[l+k] = L[i++];
+                if (j < n2) arr[l+k] = R[j++];
+
+                if (i >= n1 && j >= n2)
+                {
+                    clearInterval(interval);
+                    return;
+                }
+            }
+    
+            if (L[i] <= R[j]) 
+            {
+                arr[l+k] = L[i];
+                i++;
+            }
+            else 
+            {
+                arr[l+k] = R[j];
+                j++;
+            }
+    
+            k++;
+    
+            AddBars(arr);
+    
+        }, speed);
+    
+}
+const mergeSort = (arr : Array<number>, l : number, h : number, speed: number) => {
+    
+        if (l < h)
+        {
+            let m = Math.floor((l + h) / 2);
+    
+            mergeSort(arr, l, m, speed);
+            mergeSort(arr, m + 1, h, speed);
+    
+            merge(arr, l, m, h, speed);
+        }
+}
+
 
 // Activating start Button
 const start_btn = document.querySelector("#start_btn");
@@ -265,6 +320,7 @@ start_btn.addEventListener('click', () => {
     else if (sorting_type.value === 'Bubble') bubbleSort(ranged_arr, speed);
     else if (sorting_type.value === 'Insertion') insertionSort(ranged_arr, speed);
     else if (sorting_type.value === "Quick") quickSort(ranged_arr,0, ranged_arr.length-1, speed);
+    else if (sorting_type.value === "Merge") mergeSort(ranged_arr, 0, ranged_arr.length-1, speed);
 
 })
 
