@@ -68,7 +68,7 @@ const selectionSort = (arr: Array<number>, speed: Speed) => {
     let i = 0, j = 0, n = arr.length;
     let interval = setInterval(() => {
 
-        if (i >= n-1) {
+        if (i >= n - 1) {
             curr_bar.classList.remove('active');
             min_bar.classList.remove('selected');
             clearInterval(interval);
@@ -171,44 +171,40 @@ const insertionSort = (arr: Array<number>, speed: Speed) => {
 }
 
 // Quick sort algorithm
-const quickSort = (arr: Array<number>, l : number, h : number, speed: number) => {
+const quickSort = (arr: Array<number>, l: number, h: number, speed: number) => {
 
-    let st : Array<number> = [];
-    let top : number = -1;
+    let st: Array<number> = [];
+    let top: number = -1;
 
     let currBar = document.querySelector("#bar_0");
     let pivotBar = document.querySelector("#bar_" + h);
-    let currI : HTMLDivElement;
+    let currI: HTMLDivElement;
 
     st[++top] = l;
     st[++top] = h;
 
-    let i : number = -1, j : number = 0, pivot : number = arr[h];
+    let i: number = -1, j: number = 0, pivot: number = arr[h];
     let interval = setInterval(() => {
 
-        if (top < 0)
-        {
+        if (top < 0) {
             AddBars(arr);
             clearInterval(interval);
             return;
         }
 
-        if (j > h)
-        {
-            let temp = arr[i+1];
-            arr[i+1] = arr[h];
+        if (j > h) {
+            let temp = arr[i + 1];
+            arr[i + 1] = arr[h];
             arr[h] = temp;
 
 
-            if (i > l)
-            {
+            if (i > l) {
                 st[++top] = l;
                 st[++top] = i;
             }
 
-            if (i+2 < h)
-            {
-                st[++top] = i+2;
+            if (i + 2 < h) {
+                st[++top] = i + 2;
                 st[++top] = h;
             }
 
@@ -223,18 +219,16 @@ const quickSort = (arr: Array<number>, l : number, h : number, speed: number) =>
             i = j - 1;
 
         }
-        else
-        {
-            if (arr[j] < pivot)
-            {
+        else {
+            if (arr[j] < pivot) {
                 i++;
                 let temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
-    
+
                 AddBars(arr);
             }
-    
+
             j++;
         }
 
@@ -246,7 +240,7 @@ const quickSort = (arr: Array<number>, l : number, h : number, speed: number) =>
         pivotBar = document.querySelector(`#bar_${h}`);
         pivotBar.classList.add('selected');
 
-        if(currI) currI.classList.remove('curr_i');
+        if (currI) currI.classList.remove('curr_i');
         currI = document.querySelector(`#bar_${i}`);
         currI.classList.add('curr_i');
 
@@ -255,58 +249,56 @@ const quickSort = (arr: Array<number>, l : number, h : number, speed: number) =>
 }
 
 // Merge sort algorithm
-const merge = (arr: Array<number>, l : number, m : number, h : number, speed: number) => {
-    
-        let i : number = 0, j : number = 0, k : number = 0;
-        let L = arr.slice(l, m+1);
-        let R = arr.slice(m+1, h+1);
+const merge = (arr: Array<number>, l: number, m: number, h: number, speed: number) => {
 
-        let n1 = m - l + 1;
-        let n2 = h - m;
-    
-        let interval = setInterval(() => {
-    
-            if (i >= n1 || j >= n2)
-            {
-                if (i < n1) arr[l+k] = L[i++];
-                if (j < n2) arr[l+k] = R[j++];
+    let i: number = 0, j: number = 0, k: number = 0;
+    let L = arr.slice(l, m + 1);
+    let R = arr.slice(m + 1, h + 1);
 
-                if (i >= n1 && j >= n2)
-                {
-                    clearInterval(interval);
-                    return;
-                }
+    // console.log(arr, L, R);
+    // return;
+
+    let n1 = m - l + 1;
+    let n2 = h - m;
+
+    let interval = setInterval(() => {
+
+        if (i >= n1 || j >= n2) {
+            if (i < n1) arr[l + k] = L[i++];
+            if (j < n2) arr[l + k] = R[j++];
+
+            if (i >= n1 && j >= n2) {
+                clearInterval(interval);
+                return;
             }
-    
-            if (L[i] <= R[j]) 
-            {
-                arr[l+k] = L[i];
-                i++;
-            }
-            else 
-            {
-                arr[l+k] = R[j];
-                j++;
-            }
-    
-            k++;
-    
-            AddBars(arr);
-    
-        }, speed);
-    
-}
-const mergeSort = (arr : Array<number>, l : number, h : number, speed: number) => {
-    
-        if (l < h)
-        {
-            let m = Math.floor((l + h) / 2);
-    
-            mergeSort(arr, l, m, speed);
-            mergeSort(arr, m + 1, h, speed);
-    
-            merge(arr, l, m, h, speed);
         }
+
+        if (L[i] <= R[j])
+            arr[l + k] = L[i++];
+        else
+            arr[l + k] = R[j++];
+
+        k++;
+
+        AddBars(arr);
+
+    }, speed);
+
+}
+const mergeSort = (arr: Array<number>, l: number, h: number, speed: number) => {
+
+    if (l < h) {
+        let m = Math.floor((l + h) / 2);
+
+        mergeSort(arr, l, m, speed);
+        mergeSort(arr, m + 1, h, speed);
+
+        merge(arr, l, m, h, speed);
+    }
+    // else {
+    //     console.log(arr);
+    // }
+
 }
 
 
@@ -319,8 +311,8 @@ start_btn.addEventListener('click', () => {
     if (sorting_type.value === "Selection") selectionSort(ranged_arr, speed);
     else if (sorting_type.value === 'Bubble') bubbleSort(ranged_arr, speed);
     else if (sorting_type.value === 'Insertion') insertionSort(ranged_arr, speed);
-    else if (sorting_type.value === "Quick") quickSort(ranged_arr,0, ranged_arr.length-1, speed);
-    else if (sorting_type.value === "Merge") mergeSort(ranged_arr, 0, ranged_arr.length-1, speed);
+    else if (sorting_type.value === "Quick") quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+    else if (sorting_type.value === "Merge") mergeSort(ranged_arr, 0, ranged_arr.length - 1, speed);
 
 })
 

@@ -203,6 +203,8 @@ var merge = function (arr, l, m, h, speed) {
     var i = 0, j = 0, k = 0;
     var L = arr.slice(l, m + 1);
     var R = arr.slice(m + 1, h + 1);
+    // console.log(arr, L, R);
+    // return;
     var n1 = m - l + 1;
     var n2 = h - m;
     var interval = setInterval(function () {
@@ -216,14 +218,10 @@ var merge = function (arr, l, m, h, speed) {
                 return;
             }
         }
-        if (L[i] <= R[j]) {
-            arr[l + k] = L[i];
-            i++;
-        }
-        else {
-            arr[l + k] = R[j];
-            j++;
-        }
+        if (L[i] <= R[j])
+            arr[l + k] = L[i++];
+        else
+            arr[l + k] = R[j++];
         k++;
         AddBars(arr);
     }, speed);
@@ -235,6 +233,9 @@ var mergeSort = function (arr, l, h, speed) {
         mergeSort(arr, m + 1, h, speed);
         merge(arr, l, m, h, speed);
     }
+    // else {
+    //     console.log(arr);
+    // }
 };
 // Activating start Button
 var start_btn = document.querySelector("#start_btn");
