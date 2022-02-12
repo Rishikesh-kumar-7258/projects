@@ -194,48 +194,73 @@ var quickSort = function (arr, l, h, speed) {
         pivotBar.classList.add('selected');
         if (currI)
             currI.classList.remove('curr_i');
-        currI = document.querySelector("#bar_".concat(i));
-        currI.classList.add('curr_i');
+        if (i >= 0) {
+            currI = document.querySelector("#bar_".concat(i));
+            currI.classList.add('curr_i');
+        }
     }, speed);
 };
 // Merge sort algorithm
-var merge = function (arr, l, m, h, speed) {
-    var i = 0, j = 0, k = 0;
-    var L = arr.slice(l, m + 1);
-    var R = arr.slice(m + 1, h + 1);
-    // console.log(arr, L, R);
-    // return;
-    var n1 = m - l + 1;
-    var n2 = h - m;
+var mergeSort = function (arr, low, high, speed) {
+    var size = 1, left = 0, mid, right;
+    var isMerging = false;
+    var larr = [], rarr = [];
+    var left_index, right_index, main_index;
     var interval = setInterval(function () {
-        if (i >= n1 || j >= n2) {
-            if (i < n1)
-                arr[l + k] = L[i++];
-            if (j < n2)
-                arr[l + k] = R[j++];
-            if (i >= n1 && j >= n2) {
-                clearInterval(interval);
-                return;
+        if (size > high) {
+            clearInterval(interval);
+            return;
+        }
+        if (isMerging) {
+            if (main_index > right) {
+                left += size * 2;
+                larr.length = rarr.length = 0;
+                isMerging = false;
+            }
+            if (left_index < larr.length && right_index < rarr.length) {
+                if (larr[left_index] < rarr[right_index]) {
+                    arr[main_index] = larr[left_index];
+                    left_index++;
+                    main_index++;
+                }
+                else {
+                    arr[main_index] = rarr[right_index];
+                    right_index++;
+                    main_index++;
+                }
+            }
+            else {
+                if (left_index < larr.length) {
+                    arr[main_index] = larr[left_index];
+                    left_index++;
+                    main_index++;
+                }
+                if (right_index < rarr.length) {
+                    arr[main_index] = rarr[right_index];
+                    right_index++;
+                    main_index++;
+                }
             }
         }
-        if (L[i] <= R[j])
-            arr[l + k] = L[i++];
-        else
-            arr[l + k] = R[j++];
-        k++;
+        else {
+            if (left > high) {
+                left = 0;
+                size *= 2;
+            }
+            else {
+                mid = Math.min(left + size - 1, high);
+                right = Math.min(left + size * 2 - 1, high);
+                isMerging = true;
+                for (var i = left; i <= mid; i++)
+                    larr.push(arr[i]);
+                for (var i = mid + 1; i <= right; i++)
+                    rarr.push(arr[i]);
+                left_index = right_index = 0;
+                main_index = left;
+            }
+        }
         AddBars(arr);
     }, speed);
-};
-var mergeSort = function (arr, l, h, speed) {
-    if (l < h) {
-        var m = Math.floor((l + h) / 2);
-        mergeSort(arr, l, m, speed);
-        mergeSort(arr, m + 1, h, speed);
-        merge(arr, l, m, h, speed);
-    }
-    // else {
-    //     console.log(arr);
-    // }
 };
 // Activating start Button
 var start_btn = document.querySelector("#start_btn");

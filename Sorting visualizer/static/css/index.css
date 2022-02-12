@@ -1,7 +1,7 @@
 .bar{
-    background : linear-gradient(to bottom, #00008b, #0000ff);
+    background : linear-gradient(to bottom, #800080, #400040);
     width : 20px;
-    border : 1px solid #ff0000;
+    border : 1px solid #f08080;
 }
 .active{
     background : linear-gradient(to bottom, #006400, #008000)

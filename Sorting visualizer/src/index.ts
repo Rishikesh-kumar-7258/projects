@@ -241,64 +241,102 @@ const quickSort = (arr: Array<number>, l: number, h: number, speed: number) => {
         pivotBar.classList.add('selected');
 
         if (currI) currI.classList.remove('curr_i');
-        currI = document.querySelector(`#bar_${i}`);
-        currI.classList.add('curr_i');
-
+        if (i >= 0)
+        {
+            currI = document.querySelector(`#bar_${i}`);
+            currI.classList.add('curr_i');
+        }
+        
     }, speed)
 
 }
 
 // Merge sort algorithm
-const merge = (arr: Array<number>, l: number, m: number, h: number, speed: number) => {
+const mergeSort = (arr : Array<number>,low : number, high : number, speed : number) =>
+{
+    let size : number = 1, left : number = 0, mid : number, right : number;
+    let isMerging : boolean = false;
+    let larr : Array<number> = [], rarr : Array<number> = [];
+    let left_index : number, right_index : number, main_index : number;
 
-    let i: number = 0, j: number = 0, k: number = 0;
-    let L = arr.slice(l, m + 1);
-    let R = arr.slice(m + 1, h + 1);
+    let interval = setInterval(()=> {
 
-    // console.log(arr, L, R);
-    // return;
+        if (size > high) 
+        {
+            clearInterval(interval);
+            return;
+        }
 
-    let n1 = m - l + 1;
-    let n2 = h - m;
+        if (isMerging)
+        {
+            if (main_index > right)
+            {
+                left += size * 2;
+                larr.length = rarr.length = 0;
 
-    let interval = setInterval(() => {
+                isMerging = false;
+            }
+            if (left_index < larr.length && right_index < rarr.length)
+            {
+                if (larr[left_index] < rarr[right_index]) 
+                {
+                    arr[main_index] = larr[left_index];
+                    left_index++;
+                    main_index++;
+                }
+                else
+                {
+                    arr[main_index] = rarr[right_index];
+                    right_index++;
+                    main_index++;
+                }
 
-        if (i >= n1 || j >= n2) {
-            if (i < n1) arr[l + k] = L[i++];
-            if (j < n2) arr[l + k] = R[j++];
+            }
+            else
+            {
 
-            if (i >= n1 && j >= n2) {
-                clearInterval(interval);
-                return;
+                if (left_index < larr.length)
+                {
+                    arr[main_index] = larr[left_index];
+                    left_index++;
+                    main_index++;
+                }
+
+                if (right_index < rarr.length)
+                {
+                    arr[main_index] = rarr[right_index];
+                    right_index++;
+                    main_index++;
+                }
+            }
+
+            
+        }
+        else
+        {
+            if (left > high)
+            {
+                left = 0;
+                size *= 2;
+            }
+            else
+            {
+                mid = Math.min(left + size - 1, high);
+                right = Math.min(left + size * 2 - 1, high);
+    
+                isMerging = true;
+    
+                for (let i = left; i <= mid; i++) larr.push(arr[i]);
+                for (let i = mid + 1; i <= right; i++) rarr.push(arr[i]);
+    
+                left_index = right_index = 0;
+                main_index = left;
             }
         }
 
-        if (L[i] <= R[j])
-            arr[l + k] = L[i++];
-        else
-            arr[l + k] = R[j++];
-
-        k++;
-
         AddBars(arr);
 
-    }, speed);
-
-}
-const mergeSort = (arr: Array<number>, l: number, h: number, speed: number) => {
-
-    if (l < h) {
-        let m = Math.floor((l + h) / 2);
-
-        mergeSort(arr, l, m, speed);
-        mergeSort(arr, m + 1, h, speed);
-
-        merge(arr, l, m, h, speed);
-    }
-    // else {
-    //     console.log(arr);
-    // }
-
+    }, speed)
 }
 
 
