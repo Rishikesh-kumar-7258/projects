@@ -169,7 +169,7 @@ var quickSort = function (arr, l, h, speed) {
             h = st[top--];
             l = st[top--];
             AddBars(arr);
-            console.log(arr);
+            // console.log(arr);
             pivot = arr[h];
             j = l;
             i = j - 1;
@@ -262,20 +262,78 @@ var mergeSort = function (arr, low, high, speed) {
         AddBars(arr);
     }, speed);
 };
+// Count sort algorithm
+var countSort = function (arr, speed) {
+    arr.forEach(function (element, index) {
+        arr[index] = Math.round(element);
+    });
+    console.log(arr);
+    var isCounting = true;
+    var currentIndex = 0;
+    var countArray = [], sortedArray = [];
+    var maxNumber = Math.max.apply(Math, arr) + 1;
+    var mainArraySize = arr.length;
+    for (var i = 0; i <= maxNumber; i++)
+        countArray.push(0);
+    for (var i = 0; i < mainArraySize; i++)
+        sortedArray.push(0);
+    var interval = setInterval(function () {
+        if (isCounting) {
+            if (currentIndex >= mainArraySize) {
+                for (var i = 1; i < maxNumber; i++)
+                    countArray[i] += countArray[i - 1];
+                for (var i = maxNumber - 1; i >= 0; i--)
+                    countArray[i] = countArray[i - 1];
+                countArray[0] = 0;
+                isCounting = false;
+                currentIndex = 0;
+                // console.log(arr);
+                // console.log(countArray);
+            }
+            countArray[arr[currentIndex]]++;
+            currentIndex++;
+        }
+        else {
+            if (currentIndex >= mainArraySize) {
+                for (var i = 0; i < mainArraySize; i++)
+                    arr[i] = sortedArray[i];
+                console.log(arr, sortedArray, countArray);
+                AddBars(arr);
+                clearInterval(interval);
+                return;
+            }
+            sortedArray[countArray[arr[currentIndex]]] = arr[currentIndex];
+            countArray[arr[currentIndex]]++;
+            currentIndex++;
+        }
+    }, speed);
+};
 // Activating start Button
 var start_btn = document.querySelector("#start_btn");
 start_btn.addEventListener('click', function () {
     var sorting_type = document.querySelector("#sorting_type");
-    if (sorting_type.value === "Selection")
-        selectionSort(ranged_arr, speed);
-    else if (sorting_type.value === 'Bubble')
-        bubbleSort(ranged_arr, speed);
-    else if (sorting_type.value === 'Insertion')
-        insertionSort(ranged_arr, speed);
-    else if (sorting_type.value === "Quick")
-        quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
-    else if (sorting_type.value === "Merge")
-        mergeSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+    switch (sorting_type.value) {
+        case "Selection":
+            selectionSort(ranged_arr, speed);
+            break;
+        case "Bubble":
+            bubbleSort(ranged_arr, speed);
+            break;
+        case "Insertion":
+            insertionSort(ranged_arr, speed);
+            break;
+        case "Quick":
+            quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+            break;
+        case "Merge":
+            mergeSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+            break;
+        case "Count":
+            countSort(ranged_arr, speed);
+            break;
+        default:
+            break;
+    }
 });
 // Changing speed
 var speed_select = document.querySelector("#speed");
@@ -303,7 +361,7 @@ array_save_btn.addEventListener('click', function () {
 // Changing size of the list
 var slider = document.querySelector("#size");
 slider.addEventListener('change', function () {
-    console.log(slider.value);
+    // console.log(slider.value);
     size = parseInt(slider.value);
     arr = makeRandom(size);
     ranged_arr = convertRange(arr, 10, 400);

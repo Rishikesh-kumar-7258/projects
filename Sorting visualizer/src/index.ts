@@ -212,7 +212,7 @@ const quickSort = (arr: Array<number>, l: number, h: number, speed: number) => {
             l = st[top--];
 
             AddBars(arr);
-            console.log(arr);
+            // console.log(arr);
 
             pivot = arr[h];
             j = l;
@@ -241,94 +241,80 @@ const quickSort = (arr: Array<number>, l: number, h: number, speed: number) => {
         pivotBar.classList.add('selected');
 
         if (currI) currI.classList.remove('curr_i');
-        if (i >= 0)
-        {
+        if (i >= 0) {
             currI = document.querySelector(`#bar_${i}`);
             currI.classList.add('curr_i');
         }
-        
+
     }, speed)
 
 }
 
 // Merge sort algorithm
-const mergeSort = (arr : Array<number>,low : number, high : number, speed : number) =>
-{
-    let size : number = 1, left : number = 0, mid : number, right : number;
-    let isMerging : boolean = false;
-    let larr : Array<number> = [], rarr : Array<number> = [];
-    let left_index : number, right_index : number, main_index : number;
+const mergeSort = (arr: Array<number>, low: number, high: number, speed: number) => {
+    let size: number = 1, left: number = 0, mid: number, right: number;
+    let isMerging: boolean = false;
+    let larr: Array<number> = [], rarr: Array<number> = [];
+    let left_index: number, right_index: number, main_index: number;
 
-    let interval = setInterval(()=> {
+    let interval = setInterval(() => {
 
-        if (size > high) 
-        {
+        if (size > high) {
             clearInterval(interval);
             return;
         }
 
-        if (isMerging)
-        {
-            if (main_index > right)
-            {
+        if (isMerging) {
+            if (main_index > right) {
                 left += size * 2;
                 larr.length = rarr.length = 0;
 
                 isMerging = false;
             }
-            if (left_index < larr.length && right_index < rarr.length)
-            {
-                if (larr[left_index] < rarr[right_index]) 
-                {
+            if (left_index < larr.length && right_index < rarr.length) {
+                if (larr[left_index] < rarr[right_index]) {
                     arr[main_index] = larr[left_index];
                     left_index++;
                     main_index++;
                 }
-                else
-                {
+                else {
                     arr[main_index] = rarr[right_index];
                     right_index++;
                     main_index++;
                 }
 
             }
-            else
-            {
+            else {
 
-                if (left_index < larr.length)
-                {
+                if (left_index < larr.length) {
                     arr[main_index] = larr[left_index];
                     left_index++;
                     main_index++;
                 }
 
-                if (right_index < rarr.length)
-                {
+                if (right_index < rarr.length) {
                     arr[main_index] = rarr[right_index];
                     right_index++;
                     main_index++;
                 }
             }
 
-            
+
         }
-        else
-        {
-            if (left > high)
-            {
+        else {
+            if (left > high) {
                 left = 0;
                 size *= 2;
             }
-            else
-            {
+            else {
                 mid = Math.min(left + size - 1, high);
                 right = Math.min(left + size * 2 - 1, high);
-    
+
                 isMerging = true;
-    
+
                 for (let i = left; i <= mid; i++) larr.push(arr[i]);
                 for (let i = mid + 1; i <= right; i++) rarr.push(arr[i]);
-    
+
                 left_index = right_index = 0;
                 main_index = left;
             }
@@ -339,6 +325,66 @@ const mergeSort = (arr : Array<number>,low : number, high : number, speed : numb
     }, speed)
 }
 
+// Count sort algorithm
+const countSort = (arr: Array<number>, speed: number) => {
+
+    arr.forEach((element, index) => {
+        arr[index] = Math.round(element);
+    })
+
+    console.log(arr);
+    
+    
+    let isCounting : Boolean = true;
+    let currentIndex : number = 0;
+    let countArray : Array<number> = [], sortedArray : Array<number> = [];
+    let maxNumber : number = Math.max(...arr) + 1;
+    let mainArraySize : number = arr.length;
+
+    for (let i = 0; i <= maxNumber; i++) countArray.push(0);
+    for (let i = 0; i < mainArraySize; i++) sortedArray.push(0);
+
+    let interval = setInterval(() => {
+        if (isCounting)
+        {
+            if (currentIndex >= mainArraySize) 
+            {
+
+                for (let i = 1; i < maxNumber; i++) countArray[i] += countArray[i - 1];
+                for (let i = maxNumber-1; i>=0 ; i--) countArray[i] = countArray[i-1];
+                countArray[0] = 0;
+
+                isCounting = false;
+                currentIndex = 0;
+
+                // console.log(arr);
+                // console.log(countArray);
+                
+            }
+
+            countArray[arr[currentIndex]]++;
+            currentIndex++;
+        }
+        else
+        {
+            if (currentIndex >= mainArraySize)
+            {
+                for (let i = 0; i < mainArraySize; i++) arr[i] = sortedArray[i];
+                console.log(arr, sortedArray, countArray);
+
+                AddBars(arr);
+                clearInterval(interval);
+                return;
+            }
+
+            sortedArray[countArray[arr[currentIndex]]] = arr[currentIndex];
+            countArray[arr[currentIndex]]++;
+
+            currentIndex++;
+        }
+    }, speed)
+}
+
 
 // Activating start Button
 const start_btn = document.querySelector("#start_btn");
@@ -346,11 +392,28 @@ start_btn.addEventListener('click', () => {
 
     const sorting_type = document.querySelector("#sorting_type") as HTMLSelectElement;
 
-    if (sorting_type.value === "Selection") selectionSort(ranged_arr, speed);
-    else if (sorting_type.value === 'Bubble') bubbleSort(ranged_arr, speed);
-    else if (sorting_type.value === 'Insertion') insertionSort(ranged_arr, speed);
-    else if (sorting_type.value === "Quick") quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
-    else if (sorting_type.value === "Merge") mergeSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+    switch (sorting_type.value) {
+        case "Selection":
+            selectionSort(ranged_arr, speed);
+            break;
+        case "Bubble":
+            bubbleSort(ranged_arr, speed);
+            break;
+        case "Insertion":
+            insertionSort(ranged_arr, speed);
+            break;
+        case "Quick":
+            quickSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+            break;
+        case "Merge":
+            mergeSort(ranged_arr, 0, ranged_arr.length - 1, speed);
+            break;
+        case "Count":
+            countSort(ranged_arr, speed);
+            break;
+        default:
+            break;
+    }
 
 })
 
@@ -383,7 +446,7 @@ array_save_btn.addEventListener('click', () => {
 // Changing size of the list
 const slider = document.querySelector("#size") as HTMLInputElement;
 slider.addEventListener('change', () => {
-    console.log(slider.value);
+    // console.log(slider.value);
     size = parseInt(slider.value);
     arr = makeRandom(size);
     ranged_arr = convertRange(arr, 10, 400);
