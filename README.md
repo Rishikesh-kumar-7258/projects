@@ -1,11 +1,3 @@
-<div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Projects" />
-
-  &#xa0;
-
-  <!-- <a href="https://projects.netlify.app">Demo</a> -->
-</div>
-
 <h1 align="center">Projects</h1>
 
 <p align="center">
@@ -34,8 +26,8 @@
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="project-projects">Projects</a> &#xa0; | &#xa0; 
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
   <a href="https://github.com/Rishikesh-kumar-7258" target="_blank">Author</a>
 </p>
 
@@ -45,21 +37,27 @@
 
 Here are some of the beginner friendly project.
 
+## :project: Projects
+* furnishop
+* Happy Diwali
+* Independence day
+* My Keyboard
+* Random Password Generator
+* Smash the like button
+* Talking computer
+* Text to speech
+* Thanos snap
+* To do List
+* To Do List 2
+* Typing Game
+* Sorting Visualizer
+
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-
-## :white_check_mark: Requirements ##
-
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
-
-
-## :memo: License ##
-
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
 
 Made with :heart: by <a href="https://github.com/Rishikesh-kumar-7258" target="_blank">Rishikesh Kumar</a>
