@@ -26,7 +26,7 @@
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="project-projects">Projects</a> &#xa0; | &#xa0; 
+  <a href="memo-projects">Projects</a> &#xa0; | &#xa0; 
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="https://github.com/Rishikesh-kumar-7258" target="_blank">Author</a>
 </p>
@@ -37,7 +37,7 @@
 
 Here are some of the beginner friendly project.
 
-## :project: Projects
+## :memo: Projects
 * furnishop
 * Happy Diwali
 * Independence day
@@ -58,7 +58,7 @@ The following tools were used in this project:
 
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-
+- [Python](https://www.python.org/)
 
 Made with :heart: by <a href="https://github.com/Rishikesh-kumar-7258" target="_blank">Rishikesh Kumar</a>
 
