@@ -425,6 +425,10 @@ speed_select.addEventListener('change', () => {
     if (selected_value === "fast") speed = Speed.fast;
     else if (selected_value === "medium") speed = Speed.medium;
     else if (selected_value === "slow") speed = Speed.slow;
+
+    arr = makeRandom(size);
+    ranged_arr = convertRange(arr, 10, 400);
+    AddBars(ranged_arr);
 })
 
 // Taking input from user
