@@ -14,13 +14,25 @@ const BubbleSort = (arr : Array<number>) => {
                 let temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
-                // add the change to the array
-                changeArray.push([i, j]);
             }
+
+            // add the change to the array
+            changeArray.push(arr.slice());
         }
     }
     // return the sorted array
     return arr;
 }
 
-// function to animate change array
+// function to create the random number array
+const createRandomArray = (size : number) => {
+    // create an array
+    let arr = [];
+    // loop through the size
+    for (let i = 0; i < size; i++) {
+        // push a random number to the array
+        arr.push(Math.floor(Math.random() * size));
+    }
+    // return the array
+    return arr;
+}
