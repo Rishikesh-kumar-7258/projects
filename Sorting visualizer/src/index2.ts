@@ -36,3 +36,14 @@ const createRandomArray = (size : number) => {
     // return the array
     return arr;
 }
+
+// function to convert all the elements of array in a given range
+const convertArray = (arr : Array<number>, min : number, max : number) => {
+    // loop through the array
+    for (let i = 0; i < arr.length; i++) {
+        // convert the element to a random number between min and max
+        arr[i] = Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    // return the array
+    return arr;
+}

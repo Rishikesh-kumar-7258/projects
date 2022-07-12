@@ -32,3 +32,13 @@ var createRandomArray = function (size) {
     // return the array
     return arr;
 };
+// function to convert all the elements of array in a given range
+function convertRange(arr, min, max) {
+    // loop through the array
+    for (var i = 0; i < arr.length; i++) {
+        // convert the element to the range
+        arr[i] = (arr[i] - min) / (max - min);
+    }
+    // return the array
+    return arr;
+}
