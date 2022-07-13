@@ -1,7 +1,7 @@
 // array to store the changes
 var changeArray = [];
 const sortingType : HTMLSelectElement = document.getElementById('sorting_type') as HTMLSelectElement;
-
+const animationSpeed : HTMLSelectElement = document.getElementById('speed') as HTMLSelectElement;
 
 // function to sort using bubble sort
 const BubbleSort = (arr : Array<number>) => {

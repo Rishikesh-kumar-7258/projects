@@ -1,6 +1,7 @@
 // array to store the changes
 var changeArray = [];
 var sortingType = document.getElementById('sorting_type');
+var animationSpeed = document.getElementById('speed');
 // function to sort using bubble sort
 var BubbleSort = function (arr) {
     // loop through the array
