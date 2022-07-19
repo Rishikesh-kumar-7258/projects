@@ -1,5 +1,6 @@
 // array to store the changes
 var changeArray = [];
+var sortingType = document.getElementById('sorting_type');
 // function to sort using bubble sort
 var BubbleSort = function (arr) {
     // loop through the array
@@ -33,12 +34,12 @@ var createRandomArray = function (size) {
     return arr;
 };
 // function to convert all the elements of array in a given range
-function convertRange(arr, min, max) {
+var convertArray = function (arr, min, max) {
     // loop through the array
     for (var i = 0; i < arr.length; i++) {
-        // convert the element to the range
-        arr[i] = (arr[i] - min) / (max - min);
+        // convert the element to a random number between min and max
+        arr[i] = Math.floor(Math.random() * (max - min + 1)) + min;
     }
     // return the array
     return arr;
-}
+};
