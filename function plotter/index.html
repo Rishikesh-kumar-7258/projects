@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function plotter</title>
+
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h2>Interactive function plotter</h2>
+  
+  <main>
+  <section id="plotSettings">
+    <div>
+      <label for='xMin'>X-Min</label>
+      <input id='xMin' type='number' value='0'/>
+    </div>
+    <div>
+      <label for='xMax'>X-Max</label>
+      <input id='xMax' type='number' value='6.28'/>
+    </div>
+    
+    <div>
+      <label for='yMin'>Y-Min</label>
+      <input id='yMin' type='number' value='-1'/>
+    </div>
+    <div>
+      <label for='yMax'>Y-Max</label>
+      <input id='yMax' type='number' value='1'/>
+    </div>
+    <div>
+      <label for="color">Color</label>
+      <input id="color" type="color"/>
+    </div>
+    <div>
+      <label for='function'>Funtion to plot</label>
+      <input id='function' type='text' value='sin(x)'/>
+    </div>
+    <button id="plotBtn">Plot it!</button>
+  </section>
+  <section id="plot">
+    <div id="myFunction"></div>
+  </section>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
