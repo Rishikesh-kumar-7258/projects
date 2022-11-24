@@ -1,0 +1,99 @@
+:root{
+    --brown:brown;
+}
+*{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: teal;
+    font-size: 1.5vw ;
+}
+.nav{
+    display: flex;
+    /* border: 3px solid red; */
+    justify-content: space-between;
+    background-color:var(--brown);
+    width: 95vw;
+    margin: auto;
+    flex-wrap: wrap;
+    position: fixed;
+}
+ul{
+    display: flex;
+    list-style: none;
+    /* border: 3px solid green; */
+    justify-content:space-between;
+    width: 30vw;
+    background-color:var(--brown);
+    flex-wrap: wrap;
+    width: fit-content;
+}
+ul li{
+    margin-right: 2vw;
+}
+ul li a{
+    background-color: var(--brown);
+    color:yellow;
+    text-decoration: none;
+    border: 2px solid var(--brown);
+}
+ul li a:hover,a.active{
+    color:greenyellow;
+    /* background-color:#af5e0b; */
+    border:1px solid var(--brown) ;
+}
+.nav div{
+    align-self: center;
+    background-color: var(--brown);
+    margin: 0 8px 0 0 ;
+}
+.nav div input{
+    background-color:white;
+}
+.nav div button{
+    background-color: navy;
+    color: yellow;
+}
+.nav div button:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.middle{
+    /* border: 3px solid greenyellow; */
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+}
+.box1{
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 15vh;
+    width: 20vw;
+    height: fit-content;
+    background-color: palegreen;
+    position: fixed;
+}
+.box1 select,option{
+    background-color: palegreen;
+}
+.box2{
+    /* border: 3px solid orange; */
+    width: 60vw;
+    margin-top: 15vh;
+    margin-left: 25vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.box2 div{
+    border: 3px solid darkorchid;
+    background-color: seagreen;
+    margin-bottom: 5vh;
+    border-radius: 3vh;
+}
+.box2 h2{
+    background-color: purple;
+    font-size: 3vw;
+}
+.box2 p{
+    background-color: seagreen;
+}

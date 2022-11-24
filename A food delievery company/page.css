@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bakc:#84525273;
+}
+
+body{
+    background-color: aqua;
+    scroll-behavior: smooth;
+}
+/* Header */
+
+#header {
+    display: block;
+    position: sticky;
+    background-color: aqua;
+}
+
+#navbar {
+    background-color: black;
+    display: flex;
+    opacity: 0.8;
+}
+
+#navbar img {
+    height: 6vh;
+    margin: 1vh 2vw;
+    padding: 5px;
+    border-radius: 2vw;
+}
+
+#navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+#navbar ul li:hover {
+    transform: scale(1.1);
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+#navbar ul li a {
+    margin: 0.5vh;
+    padding: 0.5vh 2vw;
+    text-decoration: none;
+    color: white;
+    font-size: 1.3rem;
+}
+
+#navbar ul li a:hover {
+    background-color: white;
+    color: black;
+    border-radius: 5vh;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+/* home */
+
+#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    height: fit-content;
+    width: 100%;
+    background: url('https://cdn.pixabay.com/photo/2017/01/22/19/20/pizza-2000615_960_720.jpg') no-repeat center center/cover;
+    opacity: 0.9;
+}
+
+#home p {
+    font-size: 2rem;
+    opacity: 2;
+}
+
+/* services */
+
+#services {
+    display: flex;
+    background-color: var(--bakc);
+    flex-wrap: wrap;
+}
+
+.box {
+    background-color:var(--bakc);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: 20%;
+    height: fit-content;
+    margin: 2%;
+    box-shadow: 2vh 2vh 2vh 1vh rgba(0, 0, 0, 0.438);
+}
+
+.box:hover {
+    transition: all 0.2s linear;
+    transform: scale(1.1);
+}
+
+.box img {
+    height: 16vh;
+    width: 16vh;
+}
+
+/* clients */
+
+#clients {
+    background-color:var(--bakc);
+}
+
+#clients img {
+    width: 20%;
+    margin: 2%;
+}
+
+/* about */
+
+#about {
+    background-color: var(--bakc);
+}
+
+#about h3 {
+    font-size: 2.5rem;
+}
+
+#about p {
+    font-size: 1.5rem;
+}
+
+/* contact */
+
+#form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact {
+    background-color: var(--bakc);
+}
+
+#contact #form input {
+    width: 40vw;
+    height: 3vh;
+}
+#form textarea{
+    width: 40vw;
+    height: 10vh;
+}
+/* footer */
+
+#footer {
+    background-color: black;
+    color: white;
+}
+
+/* utilities */
+
+.prheading {
+    font-size: 3rem;
+}
+
+.center {
+    text-align: center;
+}
+
+.btn {
+    cursor: pointer;
+    width: fit-content;
+    padding: 1vw;
+    font-size: 1.1rem;
+    border: 2px solid black;
+    border-radius: 3vh;
+    background-color: brown;
+}
+
+.btn:hover {
+    transition: all 0.2s linear;
+    transform: scale(1.2);
+    color: white;
+    background-color: green;
+}
+@media screen and (max-width:1000px){
+    #services{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .box{
+        width: 80%;
+    }
+}
+@media screen and (max-width:200px){
+   *{
+       font-size: 1rem;
+       word-break: break-all;
+   }
+}

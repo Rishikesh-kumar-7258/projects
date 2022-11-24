@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+main{
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
+    height: 50%;
+    min-height: 300px;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid blue;
+    background-color: bisque;
+
+    button{
+        width: 50%;
+        height: 2rem;
+        position: relative;
+        cursor: pointer;
+        background-color: var(--background-color);
+        color: white;
+        border: none;
+        outline: none;
+
+        --border-size : 2px;
+        --background-color : brown;
+    }
+
+    .btn1::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        border: var(--border-size) solid var(--background-color);
+    }
+
+    .btn1{
+        z-index: 1;
+    }
+
+    .btn1:hover::before,
+    .btn1:focus::before{
+        top: calc(var(--border-size) * -2);
+        right: calc(var(--border-size) * -2);
+        bottom: calc(var(--border-size) * -2);
+        left: calc(var(--border-size) * -2);
+        transition: all .3s ease-in-out;
+    }
+
+    .btn2::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: /*var(--background-color)*/ blue;
+        z-index: -1;
+        transition: all .3s ease-in-out;
+
+        transform: scale(0);
+        transform-origin: left;
+    }
+    .btn2{
+        z-index: 1;
+        border: none;
+        outline : none;
+    }
+
+    .btn2:hover::before,
+    .btn2:focus::before{
+        transform: scale(1);
+    }
+
+    .btn3::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: var(--background-color);
+        z-index: -1;
+        border-radius: 50%;
+        transition: all .5s ease-in-out;
+        transform: scale(1.5);
+    }
+
+    .btn3{
+        z-index: 1;
+        background-color: blue;
+        overflow: hidden;
+    }
+
+    .btn3:hover::before,
+    .btn3:focus::before{
+        transform: scale(0);
+    }
+
+    .btn4::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: var(--background-color);
+        z-index: -1;
+        transition: all .5s ease-in-out;
+    }
+
+    .btn4{
+        z-index: 1;
+        background-color: blue;
+    }
+
+    .btn4:hover::before,
+    .btn4:focus::before{
+        background-color: var(--background-color);
+        bottom: calc(var(--border-size) * 2);
+    }
+}

@@ -1,0 +1,85 @@
+:root{
+    --boxw:50vw;
+    --inputw:20vw;
+    --holderc:darkslateblue;
+}
+*{
+    color: green;
+}
+.main{
+    /* border: 3px solid magenta; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:url(casey-horner-RmoWqDCqN2E-unsplash.jpg) ;
+}
+.box1{
+    /* border: 3px solid red; */
+    width: var(--boxw);
+    align-self: center;
+    text-align: center;
+}
+.box2{
+    /* border: 3px solid blue; */
+    width: var(--boxw);
+    align-self: center;
+    height: 50vh;
+    text-align: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8vh;
+}
+.form input{
+    text-align: center;
+    width: var(--inputw);
+    align-self: center;
+    background-color:burlywood;
+    color:var(--holderc);
+}
+::placeholder{
+    color:var(--holderc);
+}
+.form input[type=submit],input[type=reset]{
+    width:10vw ;
+    color: green;
+    font-weight: bold;
+    background-color: rgb(39, 57, 64);
+}
+.form input[type=submit]:hover, input[type=reset]:hover{
+    background-color: saddlebrown;
+}
+.mid{
+    background-color: burlywood;
+    width: 279px;
+    align-self: center;
+}
+#country{
+    width: auto;
+    align-self: center;
+    background-color:burlywood;
+    color: var(--holderc);
+}
+.box2 h3 a{
+    color: blue;
+    text-decoration: none;
+}
+.box2 h3 a:hover{
+    color: saddlebrown;
+}
+.btn{
+    width: var(--inputw);
+    height: 5vh;
+    background-color: rgb(39, 57, 64);
+}
+.btn:hover{
+    background-color: saddlebrown;
+}
+.btn a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: larger;
+}

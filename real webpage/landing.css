@@ -1,0 +1,93 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: teal;
+    color:greenyellow;
+    overflow: none;
+    font-weight: bolder;
+}
+.nav{
+    display: flex;
+    /* border: 3px solid red; */
+    justify-content: space-between;
+    background-color:brown;
+    margin: auto;
+    flex-wrap: wrap;
+}
+ul{
+    display: flex;
+    list-style: none;
+    /* border: 3px solid green; */
+    justify-content:space-between;
+    width: 30vw;
+    background-color: brown;
+    flex-wrap: wrap;
+}
+ul li a{
+    background-color: brown;
+    color:yellow;
+    text-decoration: brown;
+    border: 2px solid brown;
+}
+ul li a:hover,a.active{
+    color:greenyellow;
+    background-color:#af5e0b;
+}
+.nav div{
+    align-self: center;
+    background-color: brown;
+    margin: 0 8px 0 0 ;
+}
+.nav div input{
+    background-color:white;
+}
+.nav div button{
+    background-color: navy;
+    color: yellow;
+}
+.nav div button:hover{
+    background-color: green;
+    cursor: pointer;
+}
+.middle{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  /*  border: 3px solid lawngreen; */
+    text-align: center;
+    width: auto;
+    height: 100vh;
+}
+.middle a{
+    border: lightcoral;
+    text-decoration:none;
+    color: blue;
+}
+@media (max-width:575px){
+    body{
+        font-size: large;
+        text-align: center;
+        font-weight: bolder;
+    }
+    .nav ul{
+        width: auto;
+        display:flex;
+        align-self: center;
+    }
+    .nav{
+        display: flex;
+        flex-direction: column;
+    }
+    .middle{
+        height: fit-content;
+    }
+    .nav div input{
+       width: fit-content;
+       text-align: center;
+       font-weight: bolder;
+    }
+    .nav div button{
+        width: fit-content;
+        font-weight: bolder;
+    }
+}

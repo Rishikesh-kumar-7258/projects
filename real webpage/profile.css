@@ -1,0 +1,101 @@
+:root{
+    --brown:brown;
+}
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: teal;
+    overflow: none;
+    font-size: 1.5vw;
+}
+.nav{
+    display:flex;
+    justify-content: space-evenly;
+    /* border: 3px solid brown; */
+    background-color:var(--brown);
+    position: fixed;
+    width: 98vw;
+    top: 0vh;
+}
+ul{
+    display: flex;
+    list-style: none;
+    /* border: 3px solid green; */
+    justify-content:space-between;
+    width: 35vw;
+    background-color: var(--brown);
+    flex-wrap: wrap;
+}
+ul li a{
+    color:yellow;
+    text-decoration: var(--brown);
+    border: 2px solid var(--brown);
+    background-color: var(--brown);
+}
+ul li a:hover,a.active{
+    color:greenyellow;
+}
+.middle{
+    display: flex;
+    /* border: 3px solid goldenrod; */
+    height: 100vh;
+    background-color:#d84545cc;
+    margin-top: 10vh;
+}
+.box1{
+    /* border: 3px solid magenta; */
+    height: 90vh;
+    align-self: center;
+}
+.box1 ul{
+    /* border: 3px solid red; */
+    background:#739f2b;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90vh;
+    width: 10vw;
+    margin: auto;
+}
+.box1 ul li a{
+    color:#1b59b5;
+    background:#739f2b;
+    border: none;
+    font-size: x-large;
+}
+.box1 ul li {
+    background:#739f2b;
+}
+.box2{
+    /* border: 3px solid green; */
+    width: 50vw;
+    height: 90vh;
+    margin:auto;
+    background-color: #31f70078;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-evenly;
+}
+.box2 ul {
+    list-style: none;
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    background-color: #739f2b;
+    width: 20vw;
+    height: 50vh;
+    margin: 0px auto;
+    
+
+}
+.box2 ul li{
+    background-color: khaki;
+    text-align: center;
+    color: darkcyan;
+}
+#image{
+    margin: 0px auto;
+    width: 20vw;
+    height: 25vh;
+}

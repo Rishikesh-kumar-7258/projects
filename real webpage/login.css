@@ -1,0 +1,85 @@
+:root{
+    --boxw : 40vw;
+    --boxc:#67afbf;
+    --hover:rgb(5, 5, 128);
+}
+*{
+    font-family: 'Ubuntu', sans-serif;
+
+}
+.main{
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+}
+.box1{
+    border: 3px solid black;
+    width: var(--boxw);
+    text-align: center;
+    align-self: center;
+    background-color: var(--boxc);
+    color: blue;
+    height: 13vh;
+}
+.box2{
+    border: 3px solid black;
+    border-top: none;
+    text-align: center;
+    width: var(--boxw);
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:var(--boxc);
+    height: 50vh;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    /* border: 3px solid navy; */
+    margin-top: 5vh;
+}
+.form input{
+    text-align: center;
+    width: 20vw;
+    height: 4vh;
+    align-self: center;
+    background-color:lemonchiffon;
+}
+.form input[type=submit]{
+    width: 10vw;
+    background-color:rgb(6, 172, 28);
+}
+.form input[type=submit]:hover{
+    cursor: pointer;
+    background-color:green;
+}
+.inner{
+    /* border: 3px solid maroon; */
+    /* display: flex; */
+    /* flex-direction: column;
+    justify-content: space-evenly; */
+    height: 30vh;
+}
+a{
+    text-decoration: none;
+}
+.btn{
+    width: 20vw;
+    align-self: center;
+    font-size: x-large;
+    background-color: blue;
+}
+.btn a{
+    color: white;
+}
+.btn:hover{
+    background-color: rgb(13, 110, 170);
+}
+a:hover{
+    color: var(--hover);
+}
