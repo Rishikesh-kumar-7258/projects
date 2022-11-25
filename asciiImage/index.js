@@ -2,41 +2,70 @@ const densityString =
   "@QB#NgWM8RDHdOKq9$6khEPXwmeZaoS2yjufF]}{tx1zv7lciL/\\|?*>r^;:_\"~,'.-` ";
 const stringLen = densityString.length;
 
-let img;
-const scale = 10;
+const canvas = document.querySelector('#output');
+canvas.width = 500;
+const ctx = canvas.getContext('2d');
 
-function preload() {
-  img = loadImage("itachi.png");
+const asciiCanvas = document.querySelector('#ascii');
+asciiCanvas.width = 500;
+const ctx2 = asciiCanvas.getContext('2d');
+
+const btn = document.querySelector('#showBtn');
+
+const image = new Image();
+var imageData;
+image.addEventListener('load', () => {
+  canvas.height = (image.height * canvas.width) / image.width;
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+})
+
+const inputImage = document.querySelector('input');
+inputImage.addEventListener('change', function(e) {
+  openFile(e);
+})
+
+
+var openFile = function(file) {
+  var input = file.target;
+  var reader = new FileReader();
+  reader.onload = function() {
+    var dataURL = reader.result;
+    image.src = dataURL;
+  }
+  reader.readAsDataURL(input.files[0]);
 }
 
-function setup() {
-  createCanvas(img.width * scale, img.height * scale);
-}
 
-function draw() {
-  background(0);
-  // image(img, 0, 0, width, height);
+function createASCII(imageData) {
+  const imgdata = imageData.data;
 
-  let w = width / img.width;
-  let h = height / img.height;
+  // converting image into grayscale image
+  for (let i = 0; i < imgdata.length; i += 4) {
+    var lightness = (imgdata[i] + imgdata[i+1] + imgdata[i+2]) / 3;
+    imgdata[i] = lightness;
+    imgdata[i+1] = lightness;
+    imgdata[i+2] = lightness;
+  }
 
-  img.loadPixels();
-  for (let i = 0; i < img.height; i++) {
-    for (let j = 0; j < img.width; j++) {
-      const pixelIndex = (i * img.width + j) * 4;
-      const r = img.pixels[pixelIndex];
-      const g = img.pixels[pixelIndex + 1];
-      const b = img.pixels[pixelIndex + 2];
-      const gray = (r + g + b) / 3;
-
-      noStroke();
-      fill(gray);
-      // rect(j * w, i * h, w, h);
-
-      const charIndex = floor(map(gray, 0, 255, 0, stringLen - 1));
-      textSize(w);
-      text(charIndex, j * w, i * h);
-
+  asciiCanvas.height = (canvas.height * asciiCanvas.width) / canvas.width;
+  ctx2.font = '10px Comic Sans';
+  for (let i = 0; i < imageData.height; i += 4){
+    for (let j = 0; j < imageData.width; j += 4) {
+      var pixel = imgdata[i * imageData.width + j * 4] + imgdata[(i+1) * imageData.width + j * 4] + imgdata[i * imageData.width + (j+1) * 4] + imgdata[(i+1) * imageData.width + (j+1) * 4];
+      pixel /= 4;
+      ctx2.fillText(getDenseChar(pixel), i*4, j*4);
     }
   }
+  
 }
+
+// function to get the density character
+function getDenseChar(val) {
+  var index = Math.floor((val / 255) * stringLen);
+  return densityString[index];
+}
+
+btn.addEventListener('click', () => {
+  createASCII(imageData);
+})
